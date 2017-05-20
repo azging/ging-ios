@@ -1,6 +1,0 @@
-framework module THProgressView {
-  umbrella header "THProgressView-umbrella.h"
-
-  export *
-  module * { export * }
-}
