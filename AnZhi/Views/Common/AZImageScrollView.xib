@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="AZImageScrollView" id="iN0-l3-epB" customClass="AZImageScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9F-R9-6x9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyF-QZ-aAM">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </scrollView>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="UgD-n4-Q8b">
+                            <rect key="frame" x="168" y="63" width="39" height="37"/>
+                        </pageControl>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="UgD-n4-Q8b" secondAttribute="bottom" id="0pj-6F-Ccv"/>
+                        <constraint firstItem="UgD-n4-Q8b" firstAttribute="centerX" secondItem="i9F-R9-6x9" secondAttribute="centerX" id="1V9-gu-mwD"/>
+                        <constraint firstItem="TyF-QZ-aAM" firstAttribute="top" secondItem="i9F-R9-6x9" secondAttribute="top" id="Gd9-CO-6P8"/>
+                        <constraint firstAttribute="trailing" secondItem="TyF-QZ-aAM" secondAttribute="trailing" id="PNV-iF-d7h"/>
+                        <constraint firstAttribute="bottom" secondItem="TyF-QZ-aAM" secondAttribute="bottom" id="TXK-kq-biY"/>
+                        <constraint firstItem="TyF-QZ-aAM" firstAttribute="leading" secondItem="i9F-R9-6x9" secondAttribute="leading" id="rww-AA-Ph8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="i9F-R9-6x9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Cru-Va-VpY"/>
+                <constraint firstAttribute="trailing" secondItem="i9F-R9-6x9" secondAttribute="trailing" id="Y3i-Bm-dHM"/>
+                <constraint firstItem="i9F-R9-6x9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Z37-pL-mkD"/>
+                <constraint firstAttribute="bottom" secondItem="i9F-R9-6x9" secondAttribute="bottom" id="pEC-Jc-rJA"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pageControl" destination="UgD-n4-Q8b" id="Jvd-8U-mgh"/>
+                <outlet property="scrollView" destination="TyF-QZ-aAM" id="cLE-rz-tHE"/>
+            </connections>
+            <point key="canvasLocation" x="96.5" y="-149"/>
+        </view>
+    </objects>
+</document>
