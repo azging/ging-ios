@@ -1,9 +1,9 @@
 //
-//  AZPermissionUtil.h
-//  LinkCity
+//  AZHomeVC.h
+//  AnZhi
 //
-//  Created by zzs on 2016/11/9.
-//  Copyright © 2016年 张宗硕. All rights reserved.
+//  Created by LHJ on 2017/5/18.
+//  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -1,9 +1,9 @@
 //
-//  AZUpLoadManager.m
-//  LinkCity
+//  AZHomeVC.h
+//  AnZhi
 //
-//  Created by 张宗硕 on 2017/2/22.
-//  Copyright © 2017年 张宗硕. All rights reserved.
+//  Created by LHJ on 2017/5/18.
+//  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
 #import "AZUpLoadManager.h"

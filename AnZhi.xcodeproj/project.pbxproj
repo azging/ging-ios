@@ -126,6 +126,21 @@
 		31127B011ECD77CF00F12996 /* AZOrderWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 31127AF91ECD77CF00F12996 /* AZOrderWrapper.m */; };
 		31127B021ECD77CF00F12996 /* AZOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 31127AFC1ECD77CF00F12996 /* AZOrderModel.m */; };
 		31127B031ECD77CF00F12996 /* AZWxPrepayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 31127AFE1ECD77CF00F12996 /* AZWxPrepayModel.m */; };
+		3144EBD01ECDB3CF00E2F062 /* AZQuestionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBCF1ECDB3CF00E2F062 /* AZQuestionDetailVC.m */; };
+		3144EBD31ECDB3DD00E2F062 /* AZHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBD21ECDB3DD00E2F062 /* AZHomeVC.m */; };
+		3144EBD61ECDB3F600E2F062 /* AZQuestionPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBD51ECDB3F600E2F062 /* AZQuestionPublishVC.m */; };
+		3144EBD91ECDB40600E2F062 /* AZUserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBD81ECDB40600E2F062 /* AZUserVC.m */; };
+		3144EBDC1ECDB41800E2F062 /* AZRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBDB1ECDB41800E2F062 /* AZRegisterVC.m */; };
+		314BD9551ECE8F34001C3B87 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314BD9541ECE8F34001C3B87 /* Home.storyboard */; };
+		314BD9571ECE9710001C3B87 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314BD9561ECE9710001C3B87 /* Common.storyboard */; };
+		314BD9591ECE971A001C3B87 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314BD9581ECE971A001C3B87 /* User.storyboard */; };
+		314BD95B1ECE9727001C3B87 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314BD95A1ECE9727001C3B87 /* Register.storyboard */; };
+		314BD95D1ECE973F001C3B87 /* Question.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314BD95C1ECE973F001C3B87 /* Question.storyboard */; };
+		314BD9601ECEE987001C3B87 /* AZNetRequester+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD95F1ECEE987001C3B87 /* AZNetRequester+User.m */; };
+		314BD9631ECFF4A9001C3B87 /* UIImage+Upload.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9611ECFF4A9001C3B87 /* UIImage+Upload.m */; };
+		314BD9671ECFF6DA001C3B87 /* AZImageUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9641ECFF6DA001C3B87 /* AZImageUploadCell.m */; };
+		314BD9681ECFF6DA001C3B87 /* AZImageUploadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 314BD9651ECFF6DA001C3B87 /* AZImageUploadCell.xib */; };
+		314BD96B1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD96A1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -341,6 +356,30 @@
 		31127AFC1ECD77CF00F12996 /* AZOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZOrderModel.m; sourceTree = "<group>"; };
 		31127AFD1ECD77CF00F12996 /* AZWxPrepayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZWxPrepayModel.h; sourceTree = "<group>"; };
 		31127AFE1ECD77CF00F12996 /* AZWxPrepayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZWxPrepayModel.m; sourceTree = "<group>"; };
+		3144EBCE1ECDB3CF00E2F062 /* AZQuestionDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionDetailVC.h; sourceTree = "<group>"; };
+		3144EBCF1ECDB3CF00E2F062 /* AZQuestionDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionDetailVC.m; sourceTree = "<group>"; };
+		3144EBD11ECDB3DD00E2F062 /* AZHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZHomeVC.h; sourceTree = "<group>"; };
+		3144EBD21ECDB3DD00E2F062 /* AZHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZHomeVC.m; sourceTree = "<group>"; };
+		3144EBD41ECDB3F600E2F062 /* AZQuestionPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionPublishVC.h; sourceTree = "<group>"; };
+		3144EBD51ECDB3F600E2F062 /* AZQuestionPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionPublishVC.m; sourceTree = "<group>"; };
+		3144EBD71ECDB40600E2F062 /* AZUserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZUserVC.h; sourceTree = "<group>"; };
+		3144EBD81ECDB40600E2F062 /* AZUserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZUserVC.m; sourceTree = "<group>"; };
+		3144EBDA1ECDB41800E2F062 /* AZRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZRegisterVC.h; sourceTree = "<group>"; };
+		3144EBDB1ECDB41800E2F062 /* AZRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZRegisterVC.m; sourceTree = "<group>"; };
+		314BD9541ECE8F34001C3B87 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		314BD9561ECE9710001C3B87 /* Common.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
+		314BD9581ECE971A001C3B87 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		314BD95A1ECE9727001C3B87 /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		314BD95C1ECE973F001C3B87 /* Question.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Question.storyboard; sourceTree = "<group>"; };
+		314BD95E1ECEE987001C3B87 /* AZNetRequester+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AZNetRequester+User.h"; sourceTree = "<group>"; };
+		314BD95F1ECEE987001C3B87 /* AZNetRequester+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AZNetRequester+User.m"; sourceTree = "<group>"; };
+		314BD9611ECFF4A9001C3B87 /* UIImage+Upload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Upload.m"; sourceTree = "<group>"; };
+		314BD9621ECFF4A9001C3B87 /* UIImage+Upload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Upload.h"; sourceTree = "<group>"; };
+		314BD9641ECFF6DA001C3B87 /* AZImageUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZImageUploadCell.m; sourceTree = "<group>"; };
+		314BD9651ECFF6DA001C3B87 /* AZImageUploadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZImageUploadCell.xib; sourceTree = "<group>"; };
+		314BD9661ECFF6DA001C3B87 /* AZImageUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZImageUploadCell.h; sourceTree = "<group>"; };
+		314BD9691ED034BD001C3B87 /* AZQuestionPublishFinishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionPublishFinishVC.h; sourceTree = "<group>"; };
+		314BD96A1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionPublishFinishVC.m; sourceTree = "<group>"; };
 		66C8301DECB250C4850B05C8 /* Pods-AnZhi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnZhi.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnZhi/Pods-AnZhi.release.xcconfig"; sourceTree = "<group>"; };
 		7A5A8E65ABD59A3E8D899D05 /* Pods_AnZhi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnZhi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC244C3C95DAF25120914CBA /* Pods-AnZhi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnZhi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnZhi/Pods-AnZhi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -543,6 +582,11 @@
 			children = (
 				311274FE1ECD2EAB00F12996 /* Main.storyboard */,
 				311275031ECD2EAB00F12996 /* LaunchScreen.storyboard */,
+				314BD9541ECE8F34001C3B87 /* Home.storyboard */,
+				314BD9561ECE9710001C3B87 /* Common.storyboard */,
+				314BD9581ECE971A001C3B87 /* User.storyboard */,
+				314BD95A1ECE9727001C3B87 /* Register.storyboard */,
+				314BD95C1ECE973F001C3B87 /* Question.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -559,6 +603,9 @@
 		311275EA1ECD406E00F12996 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				314BD9661ECFF6DA001C3B87 /* AZImageUploadCell.h */,
+				314BD9641ECFF6DA001C3B87 /* AZImageUploadCell.m */,
+				314BD9651ECFF6DA001C3B87 /* AZImageUploadCell.xib */,
 				311275EB1ECD406E00F12996 /* AZBaseView.h */,
 				311275EC1ECD406E00F12996 /* AZBaseView.m */,
 				311276111ECD406E00F12996 /* AZImageScrollView.h */,
@@ -608,6 +655,8 @@
 				311276311ECD406E00F12996 /* AZHttpApi.m */,
 				311276471ECD406F00F12996 /* AZNetRequester.h */,
 				311276481ECD406F00F12996 /* AZNetRequester.m */,
+				314BD95E1ECEE987001C3B87 /* AZNetRequester+User.h */,
+				314BD95F1ECEE987001C3B87 /* AZNetRequester+User.m */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -623,6 +672,8 @@
 				311276521ECD406F00F12996 /* NSString+Additions.m */,
 				311276531ECD406F00F12996 /* UILabel+AZFont.h */,
 				311276541ECD406F00F12996 /* UILabel+AZFont.m */,
+				314BD9621ECFF4A9001C3B87 /* UIImage+Upload.h */,
+				314BD9611ECFF4A9001C3B87 /* UIImage+Upload.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -630,12 +681,12 @@
 		311276571ECD406F00F12996 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				3112765C1ECD406F00F12996 /* AZConstant.h */,
+				3112765D1ECD406F00F12996 /* AZConstant.m */,
 				311276581ECD406F00F12996 /* AZApiConstant.h */,
 				311276591ECD406F00F12996 /* AZApiConstant.m */,
 				3112765A1ECD406F00F12996 /* AZColorConstant.h */,
 				3112765B1ECD406F00F12996 /* AZColorConstant.m */,
-				3112765C1ECD406F00F12996 /* AZConstant.h */,
-				3112765D1ECD406F00F12996 /* AZConstant.m */,
 				3112765E1ECD406F00F12996 /* AZImageConstant.h */,
 				3112765F1ECD406F00F12996 /* AZImageConstant.m */,
 				311276601ECD406F00F12996 /* AZStoryboardConstant.h */,
@@ -734,6 +785,11 @@
 			isa = PBXGroup;
 			children = (
 				3112770A1ECD45A100F12996 /* Common */,
+				3144EBC61ECDB29B00E2F062 /* Home */,
+				3144EBC71ECDB29B00E2F062 /* QuestionDetail */,
+				3144EBC81ECDB29B00E2F062 /* QuestionPublish */,
+				3144EBCA1ECDB29B00E2F062 /* User */,
+				3144EBC91ECDB29B00E2F062 /* Register */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -962,6 +1018,53 @@
 			path = Sales;
 			sourceTree = "<group>";
 		};
+		3144EBC61ECDB29B00E2F062 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3144EBD11ECDB3DD00E2F062 /* AZHomeVC.h */,
+				3144EBD21ECDB3DD00E2F062 /* AZHomeVC.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3144EBC71ECDB29B00E2F062 /* QuestionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3144EBCE1ECDB3CF00E2F062 /* AZQuestionDetailVC.h */,
+				3144EBCF1ECDB3CF00E2F062 /* AZQuestionDetailVC.m */,
+			);
+			path = QuestionDetail;
+			sourceTree = "<group>";
+		};
+		3144EBC81ECDB29B00E2F062 /* QuestionPublish */ = {
+			isa = PBXGroup;
+			children = (
+				3144EBD41ECDB3F600E2F062 /* AZQuestionPublishVC.h */,
+				3144EBD51ECDB3F600E2F062 /* AZQuestionPublishVC.m */,
+				314BD9691ED034BD001C3B87 /* AZQuestionPublishFinishVC.h */,
+				314BD96A1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m */,
+			);
+			path = QuestionPublish;
+			sourceTree = "<group>";
+		};
+		3144EBC91ECDB29B00E2F062 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				3144EBDA1ECDB41800E2F062 /* AZRegisterVC.h */,
+				3144EBDB1ECDB41800E2F062 /* AZRegisterVC.m */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		3144EBCA1ECDB29B00E2F062 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3144EBD71ECDB40600E2F062 /* AZUserVC.h */,
+				3144EBD81ECDB40600E2F062 /* AZUserVC.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		A861E59C2BACE44F6CA7084E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1084,6 +1187,7 @@
 				31127A8D1ECD517800F12996 /* chatBar_keyboard.png in Resources */,
 				311275051ECD2EAB00F12996 /* LaunchScreen.storyboard in Resources */,
 				31127AAD1ECD517800F12996 /* chatBar_more_photo.png in Resources */,
+				314BD9681ECFF6DA001C3B87 /* AZImageUploadCell.xib in Resources */,
 				31127AA61ECD517800F12996 /* chatBar_more_camera@2x.png in Resources */,
 				31127A8B1ECD517800F12996 /* chatBar_faceSelected.png in Resources */,
 				31127A8F1ECD517800F12996 /* chatBar_keyboardSelected.png in Resources */,
@@ -1099,7 +1203,9 @@
 				31127A901ECD517800F12996 /* chatBar_keyboardSelected@2x.png in Resources */,
 				31127A9D1ECD517800F12996 /* chatBar_colorMore_camera@2x.png in Resources */,
 				31127A8E1ECD517800F12996 /* chatBar_keyboard@2x.png in Resources */,
+				314BD9551ECE8F34001C3B87 /* Home.storyboard in Resources */,
 				31127AA91ECD517800F12996 /* chatBar_more_location.png in Resources */,
+				314BD95D1ECE973F001C3B87 /* Question.storyboard in Resources */,
 				31127AAE1ECD517800F12996 /* chatBar_more_photo@2x.png in Resources */,
 				31127AAB1ECD517800F12996 /* chatBar_more_locationSelected.png in Resources */,
 				31127AA41ECD517800F12996 /* chatBar_colorMore_videoSelected@2x.png in Resources */,
@@ -1107,8 +1213,10 @@
 				31127A921ECD517800F12996 /* chatBar_more@2x.png in Resources */,
 				31127AA01ECD517800F12996 /* chatBar_colorMore_locationSelected@2x.png in Resources */,
 				31127A891ECD517800F12996 /* chatBar_face.png in Resources */,
+				314BD95B1ECE9727001C3B87 /* Register.storyboard in Resources */,
 				31127A941ECD517800F12996 /* chatBar_moreSelected@2x.png in Resources */,
 				31127A9F1ECD517800F12996 /* chatBar_colorMore_location@2x.png in Resources */,
+				314BD9591ECE971A001C3B87 /* User.storyboard in Resources */,
 				31127A9A1ECD517800F12996 /* chatBar_recordSelected@2x.png in Resources */,
 				311276C21ECD406F00F12996 /* AZImageScrollView.xib in Resources */,
 				31127AAC1ECD517800F12996 /* chatBar_more_locationSelected@2x.png in Resources */,
@@ -1123,6 +1231,7 @@
 				31127AA21ECD517800F12996 /* chatBar_colorMore_photoSelected@2x.png in Resources */,
 				31127A951ECD517800F12996 /* chatBar_record.png in Resources */,
 				31127A911ECD517800F12996 /* chatBar_more.png in Resources */,
+				314BD9571ECE9710001C3B87 /* Common.storyboard in Resources */,
 				31127AA51ECD517800F12996 /* chatBar_more_camera.png in Resources */,
 				31127A931ECD517800F12996 /* chatBar_moreSelected.png in Resources */,
 				31127A8C1ECD517800F12996 /* chatBar_faceSelected@2x.png in Resources */,
@@ -1198,6 +1307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3144EBD01ECDB3CF00E2F062 /* AZQuestionDetailVC.m in Sources */,
 				3112775E1ECD45A100F12996 /* AZUserModel.m in Sources */,
 				31127B021ECD77CF00F12996 /* AZOrderModel.m in Sources */,
 				311276E11ECD406F00F12996 /* NSString+Additions.m in Sources */,
@@ -1211,6 +1321,7 @@
 				311276E61ECD406F00F12996 /* AZConstant.m in Sources */,
 				31127B011ECD77CF00F12996 /* AZOrderWrapper.m in Sources */,
 				31127A881ECD517800F12996 /* DXRecordView.m in Sources */,
+				3144EBD31ECDB3DD00E2F062 /* AZHomeVC.m in Sources */,
 				311277001ECD406F00F12996 /* AZDateUtil.m in Sources */,
 				311276C51ECD406F00F12996 /* AZSearchBar.m in Sources */,
 				311276EC1ECD406F00F12996 /* AZRegisterHelper.m in Sources */,
@@ -1220,6 +1331,7 @@
 				311276F31ECD406F00F12996 /* AZDataManager.m in Sources */,
 				311276FB1ECD406F00F12996 /* AZLocationUtil.m in Sources */,
 				31127A871ECD517800F12996 /* DXChatBarMoreView.m in Sources */,
+				314BD9631ECFF4A9001C3B87 /* UIImage+Upload.m in Sources */,
 				311276E41ECD406F00F12996 /* AZApiConstant.m in Sources */,
 				311276C11ECD406F00F12996 /* AZImageScrollView.m in Sources */,
 				311276EA1ECD406F00F12996 /* AZPayHelper.m in Sources */,
@@ -1230,11 +1342,14 @@
 				311276DE1ECD406F00F12996 /* CLLocation+Trans.m in Sources */,
 				311276ED1ECD406F00F12996 /* AZUMengHelper.m in Sources */,
 				311276F61ECD406F00F12996 /* AZUpLoadManager.m in Sources */,
+				3144EBDC1ECDB41800E2F062 /* AZRegisterVC.m in Sources */,
 				311276FE1ECD406F00F12996 /* AZSwitcherUtil.m in Sources */,
 				311277071ECD406F00F12996 /* AZStoryboardUtil.m in Sources */,
+				314BD9601ECEE987001C3B87 /* AZNetRequester+User.m in Sources */,
 				311277561ECD45A100F12996 /* AZAuthCode.m in Sources */,
 				311276E71ECD406F00F12996 /* AZImageConstant.m in Sources */,
 				311276F81ECD406F00F12996 /* AZAppUtil.m in Sources */,
+				314BD96B1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m in Sources */,
 				311277451ECD45A100F12996 /* AZBaseVC.m in Sources */,
 				31127A821ECD517800F12996 /* EmojiEmoticons.m in Sources */,
 				311276E01ECD406F00F12996 /* NSDictionary+ParseJson.m in Sources */,
@@ -1249,8 +1364,10 @@
 				311277591ECD45A100F12996 /* AZImageModel.m in Sources */,
 				31127B031ECD77CF00F12996 /* AZWxPrepayModel.m in Sources */,
 				31127AFF1ECD77CF00F12996 /* AZConfigInitWrapper.m in Sources */,
+				3144EBD61ECDB3F600E2F062 /* AZQuestionPublishVC.m in Sources */,
 				311276FD1ECD406F00F12996 /* AZPhoneUtil.m in Sources */,
 				31127A801ECD517800F12996 /* DXMessageToolBar.m in Sources */,
+				3144EBD91ECDB40600E2F062 /* AZUserVC.m in Sources */,
 				311276D01ECD406F00F12996 /* AZTextMessageToolBar.m in Sources */,
 				311277081ECD406F00F12996 /* AZViewUtil.m in Sources */,
 				311277571ECD45A100F12996 /* AZBaseModel.m in Sources */,
@@ -1261,6 +1378,7 @@
 				311275451ECD32B000F12996 /* RecordAudio.m in Sources */,
 				311274F71ECD2EAB00F12996 /* main.m in Sources */,
 				311275491ECD32B000F12996 /* WXUtil.mm in Sources */,
+				314BD9671ECFF6DA001C3B87 /* AZImageUploadCell.m in Sources */,
 				311276C41ECD406F00F12996 /* AZRefreshNormalHeader.m in Sources */,
 				311276DD1ECD406F00F12996 /* AZNetRequester.m in Sources */,
 				311275421ECD32B000F12996 /* amrFileCodec.m in Sources */,

@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/18.
+//  Created by LHJ on 2017/5/18.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 #import "AZNetRequester.h"
 #import "IQKeyboardManager.h"
 #import "AZUtil.h"
+#import "AZHomeVC.h"
 
 @interface AppDelegate () <WXApiDelegate>
 
@@ -33,7 +34,6 @@
     [[AZUMengHelper sharedInstance] startStatistic];
     [[AZUMengHelper sharedInstance] initUMengSocialSDK];
     [[AZAMapManager sharedInstance] startAMap];
-    [AZ3DTouchUtil setUp3DTouchItem];
 }
 
 - (void)allRequest {
@@ -111,13 +111,12 @@
 
 - (void)initCommonUI {
     [self initNavAppearance];
-    [self initTabBarAppearance];
     [self initRootVC];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)initRootVC {
-
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[AZHomeVC createInstance]];
 }
 
 - (void)initNavAppearance {
@@ -133,17 +132,6 @@
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[[UIImage imageNamed:AZImageNameNaviBarBackIcon] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:[AZImageUtil getImageFromColor:[AZColorUtil getColor:AZColorAppDuckr]] forBarMetrics:UIBarMetricsDefault];
-}
-
-- (void)initTabBarAppearance {
-    UIColor *tintColor = [AZColorUtil getColor:AZColorTabBarTint];
-    
-    [[UITabBar appearance] setBackgroundColor:[UIColor clearColor]];
-    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setTintColor:tintColor];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AZColorUtil getColor:AZColorTabBarDefault]} forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[AZColorUtil getColor:AZColorTabBarTint]} forState:UIControlStateSelected];
-    [[UITabBar appearance] setBackgroundImage:[[[UIImage imageNamed:AZImageNameNaviBarOpaque] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 2)]];
 }
 
 - (void)requestAppConfigInit {

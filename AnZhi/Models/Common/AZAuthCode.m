@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/18.
+//  Created by LHJ on 2017/5/18.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
