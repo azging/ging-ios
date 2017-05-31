@@ -31,3 +31,13 @@ NSString * const AZApiUriUserLogout = @"v1/user/logout/";
 NSString * const AZApiUriUserInfoUpdate = @"";
 NSString * const AZApiUriUserInfo = @"";
 
+
+#pragma mark - Question
+
+NSString * const AZApiUriQuestionDetail = @"v1/question/detail/";
+NSString * const AZApiUriQuestionPublish = @"v1/question/publish/";
+
+NSString * const AZApiUriQuestionListNearby = @"v1/question/list/nearby/";
+NSString * const AZApiUriQuestionListNews = @"v1/question/list/new/";
+NSString * const AZApiUriQuestionListHot = @"v1/question/list/hot/";
+

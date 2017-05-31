@@ -7,9 +7,8 @@
 //
 
 #import "AZNetRequester+User.h"
-#import "AZStringUtil.h"
-#import "AZApiConstant.h"
 #import "AZDataManager.h"
+#import "AZUserModel.h"
 
 @implementation AZNetRequester (User)
 
@@ -34,14 +33,12 @@
     [[self createInstance] doGet:AZApiUriUserInfo params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
             if (dataDic) {
-                if (dataDic) {
-                    NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
-                    AZUserModel *user = [AZUserModel modelWithDict:userDic];
-                    [AZDataManager sharedInstance].userModel = user;
-                    callBack(user, error);
-                } else {
-                    callBack(nil, error);
-                }
+                NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
+                AZUserModel *user = [AZUserModel modelWithDict:userDic];
+                [AZDataManager sharedInstance].userModel = user;
+                callBack(user, error);
+            } else {
+                callBack(nil, error);
             }
         }
     }];
@@ -58,14 +55,12 @@
     [[self createInstance] doPost:AZApiUriUserLogInPhone params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
             if (dataDic) {
-                if (dataDic) {
-                    NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
-                    AZUserModel *user = [AZUserModel modelWithDict:userDic];
-                    [AZDataManager sharedInstance].userModel = user;
-                    callBack(user, error);
-                } else {
-                    callBack(nil, error);
-                }
+                NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
+                AZUserModel *user = [AZUserModel modelWithDict:userDic];
+                [AZDataManager sharedInstance].userModel = user;
+                callBack(user, error);
+            } else {
+                callBack(nil, error);
             }
         }
     }];
@@ -87,14 +82,12 @@
     [[self createInstance] doPost:AZApiUriUserLogInWechat params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
             if (dataDic) {
-                if (dataDic) {
-                    NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
-                    AZUserModel *user = [AZUserModel modelWithDict:userDic];
-                    [AZDataManager sharedInstance].userModel = user;
-                    callBack(user, error);
-                } else {
-                    callBack(nil, error);
-                }
+                NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
+                AZUserModel *user = [AZUserModel modelWithDict:userDic];
+                [AZDataManager sharedInstance].userModel = user;
+                callBack(user, error);
+            } else {
+                callBack(nil, error);
             }
         }
     }];

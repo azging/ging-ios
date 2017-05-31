@@ -117,6 +117,7 @@
 
 - (void)initRootVC {
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[AZHomeVC createInstance]];
+    self.window.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)initNavAppearance {

@@ -36,4 +36,16 @@ CF_EXPORT NSString * const AZApiUriUserLogout;
 CF_EXPORT NSString * const AZApiUriUserInfoUpdate;
 CF_EXPORT NSString * const AZApiUriUserInfo;
 
+
+
+#pragma mark - Question
+
+CF_EXPORT NSString * const AZApiUriQuestionDetail;
+CF_EXPORT NSString * const AZApiUriQuestionPublish;
+
+CF_EXPORT NSString * const AZApiUriQuestionListNearby;
+CF_EXPORT NSString * const AZApiUriQuestionListNews;
+CF_EXPORT NSString * const AZApiUriQuestionListHot;
+
+
 #endif /* AZApiConstant_h */

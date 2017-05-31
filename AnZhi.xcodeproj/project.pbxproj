@@ -126,6 +126,12 @@
 		31127B011ECD77CF00F12996 /* AZOrderWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 31127AF91ECD77CF00F12996 /* AZOrderWrapper.m */; };
 		31127B021ECD77CF00F12996 /* AZOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 31127AFC1ECD77CF00F12996 /* AZOrderModel.m */; };
 		31127B031ECD77CF00F12996 /* AZWxPrepayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 31127AFE1ECD77CF00F12996 /* AZWxPrepayModel.m */; };
+		3142BFAF1ED3D6AF00DA53C3 /* AZQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142BFAD1ED3D6AF00DA53C3 /* AZQuestionCell.m */; };
+		3142BFB01ED3D6AF00DA53C3 /* AZQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3142BFAE1ED3D6AF00DA53C3 /* AZQuestionCell.xib */; };
+		3142BFB41ED40D7C00DA53C3 /* AZImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142BFB21ED40D7C00DA53C3 /* AZImageCollectionCell.m */; };
+		3142BFB51ED40D7C00DA53C3 /* AZImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3142BFB31ED40D7C00DA53C3 /* AZImageCollectionCell.xib */; };
+		3142BFB91ED4123F00DA53C3 /* AZTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142BFB81ED4123F00DA53C3 /* AZTopTabView.m */; };
+		3142BFBC1ED425CF00DA53C3 /* AZQuestionWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3142BFBB1ED425CF00DA53C3 /* AZQuestionWrapper.m */; };
 		3144EBD01ECDB3CF00E2F062 /* AZQuestionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBCF1ECDB3CF00E2F062 /* AZQuestionDetailVC.m */; };
 		3144EBD31ECDB3DD00E2F062 /* AZHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBD21ECDB3DD00E2F062 /* AZHomeVC.m */; };
 		3144EBD61ECDB3F600E2F062 /* AZQuestionPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3144EBD51ECDB3F600E2F062 /* AZQuestionPublishVC.m */; };
@@ -141,6 +147,9 @@
 		314BD9671ECFF6DA001C3B87 /* AZImageUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9641ECFF6DA001C3B87 /* AZImageUploadCell.m */; };
 		314BD9681ECFF6DA001C3B87 /* AZImageUploadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 314BD9651ECFF6DA001C3B87 /* AZImageUploadCell.xib */; };
 		314BD96B1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD96A1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m */; };
+		314BD96E1ED03C84001C3B87 /* AZNetRequester+Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD96D1ED03C84001C3B87 /* AZNetRequester+Question.m */; };
+		314BD9721ED27AD6001C3B87 /* AZQuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9711ED27AD6001C3B87 /* AZQuestionModel.m */; };
+		314BD9751ED27E0C001C3B87 /* AZUserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9741ED27E0C001C3B87 /* AZUserWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +365,16 @@
 		31127AFC1ECD77CF00F12996 /* AZOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZOrderModel.m; sourceTree = "<group>"; };
 		31127AFD1ECD77CF00F12996 /* AZWxPrepayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZWxPrepayModel.h; sourceTree = "<group>"; };
 		31127AFE1ECD77CF00F12996 /* AZWxPrepayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZWxPrepayModel.m; sourceTree = "<group>"; };
+		3142BFAC1ED3D6AF00DA53C3 /* AZQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionCell.h; sourceTree = "<group>"; };
+		3142BFAD1ED3D6AF00DA53C3 /* AZQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionCell.m; sourceTree = "<group>"; };
+		3142BFAE1ED3D6AF00DA53C3 /* AZQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZQuestionCell.xib; sourceTree = "<group>"; };
+		3142BFB11ED40D7C00DA53C3 /* AZImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZImageCollectionCell.h; sourceTree = "<group>"; };
+		3142BFB21ED40D7C00DA53C3 /* AZImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZImageCollectionCell.m; sourceTree = "<group>"; };
+		3142BFB31ED40D7C00DA53C3 /* AZImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZImageCollectionCell.xib; sourceTree = "<group>"; };
+		3142BFB71ED4123F00DA53C3 /* AZTopTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZTopTabView.h; sourceTree = "<group>"; };
+		3142BFB81ED4123F00DA53C3 /* AZTopTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZTopTabView.m; sourceTree = "<group>"; };
+		3142BFBA1ED425CF00DA53C3 /* AZQuestionWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionWrapper.h; sourceTree = "<group>"; };
+		3142BFBB1ED425CF00DA53C3 /* AZQuestionWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionWrapper.m; sourceTree = "<group>"; };
 		3144EBCE1ECDB3CF00E2F062 /* AZQuestionDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionDetailVC.h; sourceTree = "<group>"; };
 		3144EBCF1ECDB3CF00E2F062 /* AZQuestionDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionDetailVC.m; sourceTree = "<group>"; };
 		3144EBD11ECDB3DD00E2F062 /* AZHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZHomeVC.h; sourceTree = "<group>"; };
@@ -380,6 +399,12 @@
 		314BD9661ECFF6DA001C3B87 /* AZImageUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZImageUploadCell.h; sourceTree = "<group>"; };
 		314BD9691ED034BD001C3B87 /* AZQuestionPublishFinishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionPublishFinishVC.h; sourceTree = "<group>"; };
 		314BD96A1ED034BD001C3B87 /* AZQuestionPublishFinishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionPublishFinishVC.m; sourceTree = "<group>"; };
+		314BD96C1ED03C84001C3B87 /* AZNetRequester+Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AZNetRequester+Question.h"; sourceTree = "<group>"; };
+		314BD96D1ED03C84001C3B87 /* AZNetRequester+Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AZNetRequester+Question.m"; sourceTree = "<group>"; };
+		314BD9701ED27AD6001C3B87 /* AZQuestionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZQuestionModel.h; sourceTree = "<group>"; };
+		314BD9711ED27AD6001C3B87 /* AZQuestionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionModel.m; sourceTree = "<group>"; };
+		314BD9731ED27E0C001C3B87 /* AZUserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZUserWrapper.h; sourceTree = "<group>"; };
+		314BD9741ED27E0C001C3B87 /* AZUserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZUserWrapper.m; sourceTree = "<group>"; };
 		66C8301DECB250C4850B05C8 /* Pods-AnZhi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnZhi.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnZhi/Pods-AnZhi.release.xcconfig"; sourceTree = "<group>"; };
 		7A5A8E65ABD59A3E8D899D05 /* Pods_AnZhi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnZhi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC244C3C95DAF25120914CBA /* Pods-AnZhi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnZhi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnZhi/Pods-AnZhi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -594,6 +619,8 @@
 		311275E91ECD406E00F12996 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3142BFAB1ED3D68700DA53C3 /* Question */,
+				3142BFB61ED4123F00DA53C3 /* TopTabView */,
 				311275EA1ECD406E00F12996 /* Common */,
 				311276241ECD406E00F12996 /* Other */,
 			);
@@ -603,20 +630,23 @@
 		311275EA1ECD406E00F12996 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				314BD9661ECFF6DA001C3B87 /* AZImageUploadCell.h */,
-				314BD9641ECFF6DA001C3B87 /* AZImageUploadCell.m */,
-				314BD9651ECFF6DA001C3B87 /* AZImageUploadCell.xib */,
 				311275EB1ECD406E00F12996 /* AZBaseView.h */,
 				311275EC1ECD406E00F12996 /* AZBaseView.m */,
+				311276181ECD406E00F12996 /* AZSearchBar.h */,
+				311276191ECD406E00F12996 /* AZSearchBar.m */,
+				311276161ECD406E00F12996 /* AZRefreshNormalHeader.h */,
+				311276171ECD406E00F12996 /* AZRefreshNormalHeader.m */,
+				311276141ECD406E00F12996 /* AZRefreshAutoNormalFooter.h */,
+				311276151ECD406E00F12996 /* AZRefreshAutoNormalFooter.m */,
 				311276111ECD406E00F12996 /* AZImageScrollView.h */,
 				311276121ECD406E00F12996 /* AZImageScrollView.m */,
 				311276131ECD406E00F12996 /* AZImageScrollView.xib */,
-				311276141ECD406E00F12996 /* AZRefreshAutoNormalFooter.h */,
-				311276151ECD406E00F12996 /* AZRefreshAutoNormalFooter.m */,
-				311276161ECD406E00F12996 /* AZRefreshNormalHeader.h */,
-				311276171ECD406E00F12996 /* AZRefreshNormalHeader.m */,
-				311276181ECD406E00F12996 /* AZSearchBar.h */,
-				311276191ECD406E00F12996 /* AZSearchBar.m */,
+				314BD9661ECFF6DA001C3B87 /* AZImageUploadCell.h */,
+				314BD9641ECFF6DA001C3B87 /* AZImageUploadCell.m */,
+				314BD9651ECFF6DA001C3B87 /* AZImageUploadCell.xib */,
+				3142BFB11ED40D7C00DA53C3 /* AZImageCollectionCell.h */,
+				3142BFB21ED40D7C00DA53C3 /* AZImageCollectionCell.m */,
+				3142BFB31ED40D7C00DA53C3 /* AZImageCollectionCell.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -657,6 +687,8 @@
 				311276481ECD406F00F12996 /* AZNetRequester.m */,
 				314BD95E1ECEE987001C3B87 /* AZNetRequester+User.h */,
 				314BD95F1ECEE987001C3B87 /* AZNetRequester+User.m */,
+				314BD96C1ED03C84001C3B87 /* AZNetRequester+Question.h */,
+				314BD96D1ED03C84001C3B87 /* AZNetRequester+Question.m */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -813,6 +845,7 @@
 				311277301ECD45A100F12996 /* Common */,
 				311277411ECD45A100F12996 /* User */,
 				31127AFA1ECD77CF00F12996 /* Sales */,
+				314BD96F1ED27ABF001C3B87 /* Question */,
 				31127AF11ECD77CF00F12996 /* Wrapper */,
 			);
 			path = Models;
@@ -836,6 +869,8 @@
 			children = (
 				311277421ECD45A100F12996 /* AZUserModel.h */,
 				311277431ECD45A100F12996 /* AZUserModel.m */,
+				314BD9731ED27E0C001C3B87 /* AZUserWrapper.h */,
+				314BD9741ED27E0C001C3B87 /* AZUserWrapper.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1018,6 +1053,25 @@
 			path = Sales;
 			sourceTree = "<group>";
 		};
+		3142BFAB1ED3D68700DA53C3 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				3142BFAC1ED3D6AF00DA53C3 /* AZQuestionCell.h */,
+				3142BFAD1ED3D6AF00DA53C3 /* AZQuestionCell.m */,
+				3142BFAE1ED3D6AF00DA53C3 /* AZQuestionCell.xib */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		3142BFB61ED4123F00DA53C3 /* TopTabView */ = {
+			isa = PBXGroup;
+			children = (
+				3142BFB71ED4123F00DA53C3 /* AZTopTabView.h */,
+				3142BFB81ED4123F00DA53C3 /* AZTopTabView.m */,
+			);
+			path = TopTabView;
+			sourceTree = "<group>";
+		};
 		3144EBC61ECDB29B00E2F062 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1117,17 @@
 				3144EBD81ECDB40600E2F062 /* AZUserVC.m */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		314BD96F1ED27ABF001C3B87 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				314BD9701ED27AD6001C3B87 /* AZQuestionModel.h */,
+				314BD9711ED27AD6001C3B87 /* AZQuestionModel.m */,
+				3142BFBA1ED425CF00DA53C3 /* AZQuestionWrapper.h */,
+				3142BFBB1ED425CF00DA53C3 /* AZQuestionWrapper.m */,
+			);
+			path = Question;
 			sourceTree = "<group>";
 		};
 		A861E59C2BACE44F6CA7084E /* Frameworks */ = {
@@ -1186,6 +1251,7 @@
 				31127A841ECD517800F12996 /* faceDelete.png in Resources */,
 				31127A8D1ECD517800F12996 /* chatBar_keyboard.png in Resources */,
 				311275051ECD2EAB00F12996 /* LaunchScreen.storyboard in Resources */,
+				3142BFB01ED3D6AF00DA53C3 /* AZQuestionCell.xib in Resources */,
 				31127AAD1ECD517800F12996 /* chatBar_more_photo.png in Resources */,
 				314BD9681ECFF6DA001C3B87 /* AZImageUploadCell.xib in Resources */,
 				31127AA61ECD517800F12996 /* chatBar_more_camera@2x.png in Resources */,
@@ -1221,6 +1287,7 @@
 				311276C21ECD406F00F12996 /* AZImageScrollView.xib in Resources */,
 				31127AAC1ECD517800F12996 /* chatBar_more_locationSelected@2x.png in Resources */,
 				311275001ECD2EAB00F12996 /* Main.storyboard in Resources */,
+				3142BFB51ED40D7C00DA53C3 /* AZImageCollectionCell.xib in Resources */,
 				31127A981ECD517800F12996 /* chatBar_recordBg@2x.png in Resources */,
 				31127AA71ECD517800F12996 /* chatBar_more_cameraSelected.png in Resources */,
 				31127A971ECD517800F12996 /* chatBar_recordBg.png in Resources */,
@@ -1314,6 +1381,7 @@
 				311277021ECD406F00F12996 /* AZStringUtil.m in Sources */,
 				311276D11ECD406F00F12996 /* AZHttpApi.m in Sources */,
 				31127A811ECD517800F12996 /* Emoji.m in Sources */,
+				314BD96E1ED03C84001C3B87 /* AZNetRequester+Question.m in Sources */,
 				311276FF1ECD406F00F12996 /* AZArrayUtil.m in Sources */,
 				311276FC1ECD406F00F12996 /* AZPermissionUtil.m in Sources */,
 				311277441ECD45A100F12996 /* AZAutoRefreshVC.m in Sources */,
@@ -1332,17 +1400,22 @@
 				311276FB1ECD406F00F12996 /* AZLocationUtil.m in Sources */,
 				31127A871ECD517800F12996 /* DXChatBarMoreView.m in Sources */,
 				314BD9631ECFF4A9001C3B87 /* UIImage+Upload.m in Sources */,
+				3142BFB41ED40D7C00DA53C3 /* AZImageCollectionCell.m in Sources */,
 				311276E41ECD406F00F12996 /* AZApiConstant.m in Sources */,
 				311276C11ECD406F00F12996 /* AZImageScrollView.m in Sources */,
 				311276EA1ECD406F00F12996 /* AZPayHelper.m in Sources */,
 				311276E21ECD406F00F12996 /* UILabel+AZFont.m in Sources */,
+				3142BFAF1ED3D6AF00DA53C3 /* AZQuestionCell.m in Sources */,
+				314BD9751ED27E0C001C3B87 /* AZUserWrapper.m in Sources */,
 				311276C31ECD406F00F12996 /* AZRefreshAutoNormalFooter.m in Sources */,
 				311276FA1ECD406F00F12996 /* AZFileUtil.m in Sources */,
 				311276EF1ECD406F00F12996 /* AZImageUtil.m in Sources */,
 				311276DE1ECD406F00F12996 /* CLLocation+Trans.m in Sources */,
+				314BD9721ED27AD6001C3B87 /* AZQuestionModel.m in Sources */,
 				311276ED1ECD406F00F12996 /* AZUMengHelper.m in Sources */,
 				311276F61ECD406F00F12996 /* AZUpLoadManager.m in Sources */,
 				3144EBDC1ECDB41800E2F062 /* AZRegisterVC.m in Sources */,
+				3142BFB91ED4123F00DA53C3 /* AZTopTabView.m in Sources */,
 				311276FE1ECD406F00F12996 /* AZSwitcherUtil.m in Sources */,
 				311277071ECD406F00F12996 /* AZStoryboardUtil.m in Sources */,
 				314BD9601ECEE987001C3B87 /* AZNetRequester+User.m in Sources */,
@@ -1382,6 +1455,7 @@
 				311276C41ECD406F00F12996 /* AZRefreshNormalHeader.m in Sources */,
 				311276DD1ECD406F00F12996 /* AZNetRequester.m in Sources */,
 				311275421ECD32B000F12996 /* amrFileCodec.m in Sources */,
+				3142BFBC1ED425CF00DA53C3 /* AZQuestionWrapper.m in Sources */,
 				31127AB21ECD517800F12996 /* XHMessageTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

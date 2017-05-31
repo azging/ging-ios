@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AZWebVC.h"
+#import <UIKit/UIKit.h>
+
+@class AZWebVC;
+@class AZQuestionWrapper;
 
 @interface AZSwitcherUtil : NSObject
 
@@ -20,6 +23,14 @@
 
 + (void)presentToShowVC:(UIViewController *)vc;
 + (void)presentToShowCommonNavRootVC:(UIViewController *)rootVC;
+
+
+#pragma mark - Question
+
++ (void)pushToShowQuestionDetailVC:(AZQuestionWrapper *)questionWrapper;
+
++ (void)pushToShowQuestionPublishVC;
++ (void)pushToShowQuestionPublishFinishVC:(AZQuestionWrapper *)questionWrapper;
 
 
 @end

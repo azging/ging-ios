@@ -8,6 +8,9 @@
 
 #import "AZAutoRefreshVC.h"
 
+@class AZQuestionWrapper;
+
 @interface AZQuestionDetailVC : AZAutoRefreshVC
 
+@property (strong, nonatomic) AZQuestionWrapper *questionWrapper;
 @end

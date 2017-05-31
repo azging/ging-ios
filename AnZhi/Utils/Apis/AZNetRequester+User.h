@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AZNetRequester.h"
-#import "AZUserModel.h"
+@class AZUserModel;
+
 
 @interface AZNetRequester (User)
 

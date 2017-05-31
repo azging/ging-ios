@@ -28,6 +28,7 @@ CF_EXPORT NSString * const VCIDHomeVC;
 CF_EXPORT NSString * const SBNameQuestion;
 CF_EXPORT NSString * const VCIDQuestionDetailVC;
 CF_EXPORT NSString * const VCIDQuestionPublishVC;
+CF_EXPORT NSString * const VCIDQuestionPublishFinishVC;
 
 
 #pragma mark - Register

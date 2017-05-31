@@ -7,6 +7,7 @@
 //
 
 #import "AZQuestionPublishFinishVC.h"
+#import "AZStoryboardUtil.h"
 
 @interface AZQuestionPublishFinishVC ()
 
@@ -14,10 +15,18 @@
 
 @implementation AZQuestionPublishFinishVC
 
++ (instancetype)createInstance {
+    return (AZQuestionPublishFinishVC *)[AZStoryboardUtil getViewController:SBNameQuestion identifier:VCIDQuestionPublishFinishVC];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

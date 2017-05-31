@@ -12,6 +12,7 @@
 
 #import "DXRecordView.h"
 #import "AZUtil.h"
+#import "AZConstant.h"
 
 
 @interface DXRecordView ()

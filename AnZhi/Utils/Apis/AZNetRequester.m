@@ -7,10 +7,9 @@
 //
 
 #import "AZNetRequester.h"
-#import "AZApiConstant.h"
 #import "AZDataManager.h"
 #import "AZAppUtil.h"
-#import "AZPopViewHelper.h"
+#import "AZConfigInitWrapper.h"
 
 @implementation AZNetRequester
 

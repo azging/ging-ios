@@ -8,11 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AZHttpApi.h"
-#import "AZAuthCode.h"
-#import "AZUserModel.h"
-#import "AZConfigInitWrapper.h"
-
-
+#import "AZStringUtil.h"
+#import "AZApiConstant.h"
 
 @interface AZNetRequester : AZHttpApi
 

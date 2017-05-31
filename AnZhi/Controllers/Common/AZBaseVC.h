@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "AZConstant.h"
 //#import "AZUtil.h"
 //#import "AZNetRequester.h"

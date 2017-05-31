@@ -12,6 +12,7 @@
 #import "AZNetRequester+User.h"
 #import "AZAlertUtil.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "AZWebVC.h"
 
 @interface AZRegisterVC () <UITextFieldDelegate>
 

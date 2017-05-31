@@ -131,7 +131,6 @@
     NSURL *appStoreUrl = [NSURL URLWithString:AZConstantAppDownloadUrl];
     if ([[UIApplication sharedApplication] canOpenURL:appStoreUrl]) {
         [[UIApplication sharedApplication] openURL:appStoreUrl];
-        [AZNetRequester requestEvalateDuckrApp];
     }
 }
 

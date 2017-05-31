@@ -102,6 +102,9 @@
 }
 
 + (NSArray *)removeRearObj:(NSArray *)arr {
+    if (arr.count <= 0) {
+        return [NSArray array];
+    }
     NSMutableArray *mutArr = [[NSMutableArray alloc] initWithArray:arr];
     [mutArr removeObjectAtIndex:arr.count - 1];
     return mutArr;

@@ -12,23 +12,14 @@
 
 #pragma mark - Server
 
-//NSString * const AZServerDomain = @"http://api.duckr.cn/";
-//NSString * const AZServerApiPrefix = @"http://api.duckr.cn/api/";
-//NSString * const AZServerMobilePrefix = @"http://api.duckr.cn/mobile/";
-//
-//NSString * const AZServerXmppName = @"127.0.0.1";
-//NSString * const AZServerXmppIp = @"chat.duckr.cn";
-//NSInteger const AZServerXmppPort = 5222;
+//NSString * const AZServerDomain = @"http://http://47.93.28.215/";
+//NSString * const AZServerApiPrefix = @"http://47.93.28.215/api/";
+//NSString * const AZServerMobilePrefix = @"http://47.93.28.215/mobile/";
 
-NSString * const AZServerDomain = @"http://dev.duckr.cn/duckr/";
-NSString * const AZServerApiPrefix = @"http://dev.duckr.cn/server/api/";
-NSString * const AZServerMobilePrefix = @"http://dev.duckr.cn/server/mobile/";
-//NSString * const AZServerApiPrefix = @"http://dev.duckr.cn/duckr/api/";
-//NSString * const AZServerMobilePrefix = @"http://dev.duckr.cn/duckr/mobile/";
+NSString * const AZServerDomain = @"http://47.93.28.215/ging/";
+NSString * const AZServerApiPrefix = @"http://47.93.28.215/ging/api/";
+NSString * const AZServerMobilePrefix = @"http://47.93.28.215/ging/mobile/";
 
-NSString * const AZServerXmppName = @"127.0.0.1";
-NSString * const AZServerXmppIp = @"101.200.190.185";
-NSInteger const AZServerXmppPort = 5222;
 
 
 NSString * const AZUriMobileActivBrief = @"activ/brief/";

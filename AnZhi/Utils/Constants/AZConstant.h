@@ -167,6 +167,13 @@ typedef enum : NSUInteger {
     UserGender_Female   = 2,
 } UserGender;
 
+
+typedef enum : NSInteger {
+    AZHomeVCTabType_Nearby          = 0,
+    AZHomeVCTabType_News            = 1,
+    AZHomeVCTabType_Hot             = 2,
+} AZHomeVCTabType;
+
 typedef enum : NSUInteger {
     OrderPaymentType_Default    = 0,
     OrderPaymentType_Ali        = 1,

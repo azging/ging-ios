@@ -98,8 +98,29 @@ static const CGFloat AZImageUpLoadDefaultMaxSixe = 1024 * 1024 / 2;
     return [AZImageUtil getImageFromColor:color width:1 height:1];
 }
 
++ (UIImage *)getImageFromColor:(UIColor *)color width:(CGFloat)width height:(CGFloat)height {
+    CGRect rect = CGRectMake(0, 0, width, height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
-
++ (UIImage *)getImageFromImage:(UIImage *)image inRect:(CGRect)rect {
+    //把像 素rect 转化为 点rect（如无转化则按原图像素取部分图片）
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat x= rect.origin.x*scale,y=rect.origin.y*scale,w=rect.size.width*scale,h=rect.size.height*scale;
+    CGRect dianRect = CGRectMake(x, y, w, h);
+    
+    //截取部分图片并生成新图片
+    CGImageRef sourceImageRef = [image CGImage];
+    CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, dianRect);
+    UIImage *newImage = [UIImage imageWithCGImage:newImageRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
+    return newImage;
+}
 
 /**
  * @brief   放大缩小图像.

@@ -11,6 +11,7 @@
 #import "AZConstant.h"
 #import "AZDataManager.h"
 #import "NSString+Additions.h"
+#import "AFNetworking.h"
 
 // 接口返回的正确状态值
 static const NSInteger AZHttpStatusSuccess = 0;

@@ -13,6 +13,7 @@
 #import "FacialView.h"
 #import "Emoji.h"
 #import "AZUtil.h"
+#import "AZConstant.h"
 
 @interface FacialView ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIPageControl *pageControl;

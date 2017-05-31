@@ -11,9 +11,9 @@
 #import "SZTextView.h"
 #import "UIImage+Upload.h"
 #import "AZImageUploadCell.h"
+#import "AZNetRequester+Question.h"
 
-static const CGFloat AZQuestionPublishImageImageGap = 3.0f;
-static const NSInteger AZQuestionPublishImageImageColumNum = 3;
+static const CGFloat AZQuestionPublishImageGap = 5.0f;
 static const NSInteger AZQuestionPublishImageMaxNum = 3;
 static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 
@@ -30,8 +30,10 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 
 @property (weak, nonatomic) IBOutlet UITextField *paymentTF;
 @property (weak, nonatomic) IBOutlet UIImageView *paymentIcon;
-@property (weak, nonatomic) IBOutlet UISwitch *hideSwitchBar;
+@property (weak, nonatomic) IBOutlet UISwitch *anonymousSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *publishButton;
+
+@property (assign, nonatomic) NSInteger uploadTimes;
 
 @end
 
@@ -41,20 +43,35 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
     return (AZQuestionPublishVC *)[AZStoryboardUtil getViewController:SBNameQuestion identifier:VCIDQuestionPublishVC];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (NSArray *)imageArr {
+    if (![AZArrayUtil isValidArray:_imageArr]) {
+        UIImage *image = [UIImage imageNamed:AZCommonCameraAddIcon];
+        _imageArr = [[NSArray alloc] initWithObjects:image, nil];
+    }
+    return _imageArr;
 }
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    
+    [self initCollectionView];
+}
 
 
-
+- (void)initCollectionView {
+//    [self.photoCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([AZImageUploadCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AZImageUploadCell class])];
+}
 
 
 - (IBAction)paymentTFEditingChanged:(UITextField *)sender {
 }
 
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
 
 #pragma mark - UICollectionView Delegate
 
@@ -63,7 +80,7 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return AZQuestionPublishImageImageGap;
+    return AZQuestionPublishImageGap;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -75,7 +92,7 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UIImage *image = [self.imageArr objectAtIndex:indexPath.row];
+    UIImage *image = [self.imageArr objectAtIndex:indexPath.item];
     AZImageUploadCell *cell = [self.photoCollectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AZImageUploadCell class]) forIndexPath:indexPath];
     [cell updateShowPhotoPublishImageCell:image indexPath:indexPath delegate:self];
     cell.deleteButton.hidden = self.imageArr.count - 1 == indexPath.row;
@@ -95,7 +112,6 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
         [AZViewUtil pickPhotos:(AZQuestionPublishImageMaxNum - self.imageArr.count + 1) callBack:^(NSArray *imageArr) {
             if (imageArr.count > 0) {
                 weakSelf.imageArr = [AZArrayUtil mergeArr:weakSelf.imageArr atIndex:(weakSelf.imageArr.count - 1) rearArr:imageArr];
-                [weakSelf uploadImageToQiNiu:imageArr];
             }
         } cancel:nil];
     } else {
@@ -104,15 +120,7 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
     }
 }
 
-- (void)uploadImageToQiNiu:(NSArray *)imageArr {
-    [imageArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIImage *image = (UIImage *)obj;
-        [AZImageUtil uploadFileToQinu:image imageType:ImageCategoryPhoto completion:^(NSString *imgUrl) {
-            image.photoUrl = imgUrl;
-            image.uploadFinished = YES;
-        }];
-    }];
-}
+
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
@@ -125,15 +133,99 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
         [AZAlertUtil showActionSheet:@[@"删除"] callBack:^(NSInteger selectIndex) {
             if (1 == selectIndex) {
                 self.imageArr = [AZArrayUtil removeObj:self.imageArr atIndex:indexPath.row];
-//                [self updateShow];
+                [self.photoCollectionView reloadData];
             }
         }];
     }
 }
 
+
+- (BOOL)checkInput {
+    if ([AZStringUtil isNullString:self.titleTF.text]) {
+        [AZAlertUtil tipOneMessage:@"请输入提问标题"];
+        return NO;
+    }
+    if ([AZStringUtil isNullString:self.descTextView.text]) {
+        [AZAlertUtil tipOneMessage:@"请输入问题描述"];
+        return NO;
+    }
+    if ([self.paymentTF.text floatValue] < 0.01) {
+        [AZAlertUtil tipOneMessage:@"请输入正确的红包金额"];
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - Button Actions
 
 - (IBAction)publishButtonAction:(id)sender {
+    [self.view endEditing:YES];
+    if (![self checkInput]) {
+        return;
+    }
+    
+    self.uploadTimes = 0;
+    [AZAlertUtil showHudWithHint:@"正在发布..."];
+    
+    [self requesetQuestionPublish];
+}
+
+
+- (void)uploadImage {
+    self.uploadTimes ++;
+    [self uploadImageToQiNiu:self.imageArr];
+}
+
+- (void)uploadImageToQiNiu:(NSArray *)imageArr {
+    if (self.uploadTimes > 2) {
+        [AZAlertUtil hideHud];
+        [AZAlertUtil tipOneMessage:@"图片上传出错，请检查网络情况后重试"];
+        return;
+    }
+    
+    [imageArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == imageArr.count - 1) {
+            return;
+        }
+        UIImage *image = (UIImage *)obj;
+        if (image.uploadFinished && [AZStringUtil isNotNullString:image.photoUrl]) {
+            [self requesetQuestionPublish];
+            return;
+        }
+        [AZImageUtil uploadFileToQinu:image imageType:ImageCategoryPhoto completion:^(NSString *imgUrl) {
+            image.photoUrl = imgUrl;
+            image.uploadFinished = YES;
+            
+            [self requesetQuestionPublish];
+        }];
+    }];
+    
+}
+
+- (void)requesetQuestionPublish {
+    
+    NSArray *uploadImageArr = [AZArrayUtil removeRearObj:self.imageArr];
+
+    NSMutableArray *uploadUrlArr = [NSMutableArray array];
+    for (UIImage *image in uploadImageArr) {
+        if (image.uploadFinished && [AZStringUtil isNotNullString:image.photoUrl]) {
+            [uploadUrlArr addObject:image.photoUrl];
+        } else {
+            if (image.uploadFinished && [AZStringUtil isNullString:image.photoUrl]) {
+                [self uploadImage];
+            }
+            return;
+        }
+    }
+
+    [AZNetRequester requestQuestionPublish:self.titleTF.text desc:self.descTextView.text photoUrlArr:uploadImageArr reward:[self.paymentTF.text floatValue] isAnonymous:self.anonymousSwitch.on callBack:^(AZQuestionWrapper *questionWrapper, NSError *error) {
+        [AZAlertUtil hideHud];
+        if (!error) {
+            [AZSwitcherUtil pushToShowQuestionPublishFinishVC:questionWrapper];
+        } else {
+            [AZAlertUtil tipOneMessage:error.domain];
+        }
+    }];
 }
 
 

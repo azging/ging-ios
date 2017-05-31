@@ -13,7 +13,11 @@
 #import "AZDataManager.h"
 #import "AZRegisterHelper.h"
 #import "AZDateUtil.h"
-
+#import "AZWebVC.h"
+#import "AZQuestionPublishVC.h"
+#import "AZQuestionPublishFinishVC.h"
+#import "AZQuestionWrapper.h"
+#import "AZQuestionDetailVC.h"
 
 @implementation AZSwitcherUtil
 
@@ -39,6 +43,27 @@
 + (void)presentToShowCommonNavRootVC:(UIViewController *)rootVC {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rootVC];
     [AZSwitcherUtil presentToShowVC:nav];
+}
+
+
+#pragma mark - Question
+
+
++ (void)pushToShowQuestionDetailVC:(AZQuestionWrapper *)questionWrapper {
+    AZQuestionDetailVC *vc = [AZQuestionDetailVC createInstance];
+    vc.questionWrapper = questionWrapper;
+    [AZSwitcherUtil pushToShowInDefaultNaviVC:vc];
+}
+
++ (void)pushToShowQuestionPublishVC {
+    AZQuestionPublishVC *vc = [AZQuestionPublishVC createInstance];
+    [AZSwitcherUtil pushToShowInDefaultNaviVC:vc];
+}
+
++ (void)pushToShowQuestionPublishFinishVC:(AZQuestionWrapper *)questionWrapper {
+    AZQuestionPublishFinishVC *vc = [AZQuestionPublishFinishVC createInstance];
+    vc.questionWrapper = questionWrapper;
+    [AZSwitcherUtil pushToShowInDefaultNaviVC:vc];
 }
 
 

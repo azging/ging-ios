@@ -12,6 +12,7 @@
 
 #import "DXMessageToolBar.h"
 #import "AZUtil.h"
+#import "AZConstant.h"
 
 @interface DXMessageToolBar()<UITextViewDelegate, DXFaceDelegate>
 {

@@ -12,6 +12,7 @@
 
 #import "DXChatBarMoreView.h"
 #import "AZUtil.h"
+#import "AZConstant.h"
 
 #define CHAT_BUTTON_SIZE 58
 #define MARGIN_BUTTON_TO_EDGE 30

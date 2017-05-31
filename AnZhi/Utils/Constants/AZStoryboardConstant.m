@@ -25,6 +25,7 @@ NSString * const VCIDHomeVC = @"AZHomeVC";
 NSString * const SBNameQuestion = @"Question";
 NSString * const VCIDQuestionDetailVC = @"AZQuestionDetailVC";
 NSString * const VCIDQuestionPublishVC = @"AZQuestionPublishVC";
+NSString * const VCIDQuestionPublishFinishVC = @"AZQuestionPublishFinishVC";
 
 
 #pragma mark - Register

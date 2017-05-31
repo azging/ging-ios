@@ -24,10 +24,7 @@
 #import "AZPopViewHelper.h"
 
 
-static const void * AZUsersViewButtonUserModelKey = &AZUsersViewButtonUserModelKey;
-
 @implementation AZViewUtil
-
 
 #pragma mark - Public Func
 
@@ -49,40 +46,6 @@ static const void * AZUsersViewButtonUserModelKey = &AZUsersViewButtonUserModelK
     return nil;
 }
 
-+ (UIScrollView *)getFilterButtonsView:(NSArray *)buttonArr size:(CGSize)size withGap:(CGFloat)gap {
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
-    scrollView.contentSize = size;
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.showsHorizontalScrollIndicator = NO;
-    
-    __block UIButton *lastButton = nil;
-    [buttonArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *button = (UIButton *)obj;
-        [scrollView addSubview:button];
-        if (0 == idx) {
-            [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(scrollView.mas_left).with.offset(0.0f);
-                make.centerY.equalTo(scrollView.mas_centerY).offset(0.0f);
-                make.height.equalTo(scrollView.mas_height);
-            }];
-        } else if (idx < buttonArr.count) {
-            [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(lastButton.mas_right).with.offset(gap);
-                make.centerY.equalTo(scrollView.mas_centerY).offset(0.0f);
-                make.height.equalTo(scrollView.mas_height);
-            }];
-        }
-        if (idx == buttonArr.count - 1) {
-            [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(scrollView.mas_right).with.offset(0.0f);
-            }];
-        }
-        lastButton = button;
-    }];
-    
-    return scrollView;
-}
-
 + (void)updateAvatarImageView:(UIImageView *)imageView url:(NSString *)url {
     [imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:AZDefaultAvatarImageName]];
 }
@@ -101,27 +64,15 @@ static const void * AZUsersViewButtonUserModelKey = &AZUsersViewButtonUserModelK
     }
 }
 
-+ (void)updateAvatarButton:(UIButton *)button url:(NSString *)url {
-    [button setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:AZDefaultAvatarImageName]];
-}
-
-+ (void)updateCoverButton:(UIButton *)button url:(NSString *)url {
-    [button setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:AZDefaultCoverImageName]];
-}
-
-+ (void)updateGenderAgeView:(AZUserModel *)model bgView:(UIView *)view genderImageView:(UIImageView *)imageView ageLabel:(UILabel *)label {
-    view.hidden = YES;
-    label.text = [model getUserAgeStr];
-    if (UserGender_Male == model.gender) {
-        view.hidden = NO;
-        view.backgroundColor = [AZColorUtil getColor:AZColorUserGenderMale];
-        imageView.image = [UIImage imageNamed:AZImageNameUserGenderMale];
-    } else if (UserGender_Female == model.gender) {
-        view.hidden = NO;
-        view.backgroundColor = [AZColorUtil getColor:AZColorUserGenderFemale];
-        imageView.image = [UIImage imageNamed:AZImageNameUserGenderFemale];
++ (void)updateGenderImageView:(UIImageView *)genderImageView gender:(NSInteger)gender {
+    genderImageView.hidden = YES;
+    if (UserGender_Male == gender) {
+        genderImageView.hidden = NO;
+        genderImageView.image = [UIImage imageNamed:AZImageNameUserGenderMale];
+    } else if (UserGender_Female == gender) {
+        genderImageView.hidden = NO;
+        genderImageView.image = [UIImage imageNamed:AZImageNameUserGenderFemale];
     }
-    [AZViewUtil updateViewCornerRadius:view cornerRadius:2.0f];
 }
 
 

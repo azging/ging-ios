@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
 #import "NSDictionary+ParseJson.h"
 
 typedef void(^requestCallBack)(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error);
