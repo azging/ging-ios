@@ -2,14 +2,17 @@
 //  AZQuestionPublishFinishVC.m
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/20.
+//  Created by LHJ on 2017/5/20.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
 #import "AZQuestionPublishFinishVC.h"
 #import "AZStoryboardUtil.h"
+#import "AZQuestionCell.h"
 
-@interface AZQuestionPublishFinishVC ()
+@interface AZQuestionPublishFinishVC () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 
 @end
 
@@ -21,12 +24,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.navigationItem.hidesBackButton = YES;
+    [self initTableView];
 }
 
+- (void)initTableView {
+    self.tableView.estimatedRowHeight = 180;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AZQuestionCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AZQuestionCell class])];
+}
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.questionWrapper ? 1 : 0;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    AZQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AZQuestionCell class]) forIndexPath:indexPath];
+    [cell updateShowQuestionCell:self.questionWrapper];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.tableViewHeightConstraint.constant = self.tableView.contentSize.height;
+    if (nil == cell) {
+        return [[UITableViewCell alloc] init];
+    }
+    return cell;
+}
+
+- (IBAction)finishButtonAction:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

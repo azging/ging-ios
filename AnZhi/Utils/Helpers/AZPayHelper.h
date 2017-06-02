@@ -8,23 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "AZOrderWrapper.h"
-#import "AZOrderTicketWrapper.h"
 
 @class AZPayHelper;
 
 @protocol AZPayHelperDelegate <NSObject>
 @optional
-- (void)paymentHelper:(AZPayHelper *)paymentHelper didPaySucceed:(BOOL)issucceed order:(AZOrderModel *)model error:(NSError *)error;
+- (void)paymentHelper:(AZPayHelper *)paymentHelper didPaySucceed:(BOOL)issucceed order:(AZOrderWrapper *)orderWrapper error:(NSError *)error;
 
 @end
 
 @interface AZPayHelper : NSObject
 
 - (instancetype)initWithDelegate:(id<AZPayHelperDelegate>)delegate;
-//- (void)callWxPay:(AZOrderTicketWrapper *)orderTicketWrapper;
-- (void)callFreePay:(AZOrderTicketWrapper *)orderTicketWrapper;
-- (void)callWxPay:(AZOrderTicketWrapper *)orderTicketWrapper addrUid:(NSString *)addrUid contact:(NSArray *)contactArr;
-- (void)callAliPay:(AZOrderTicketWrapper *)orderTicketWrapper addrUid:(NSString *)addrUid contact:(NSArray *)contactArr;
+- (void)callWxPay:(NSString *)quid
+             auid:(NSString *)auid
+           amount:(CGFloat)amount
+      paymentType:(AZOrderPaymentType)paymentType
+        tradeType:(AZOrderTradeType)tradeType;
 
 - (void)clientDidPaySucceed;
 

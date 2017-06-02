@@ -12,22 +12,22 @@
 
 #pragma mark - Server
 
-//NSString * const AZServerDomain = @"http://http://47.93.28.215/";
-//NSString * const AZServerApiPrefix = @"http://47.93.28.215/api/";
-//NSString * const AZServerMobilePrefix = @"http://47.93.28.215/mobile/";
 
-NSString * const AZServerDomain = @"http://47.93.28.215/ging/";
-NSString * const AZServerApiPrefix = @"http://47.93.28.215/ging/api/";
-NSString * const AZServerMobilePrefix = @"http://47.93.28.215/ging/mobile/";
+NSString * const AZServerDomain = @"http://www.azging.com/dev/";
+NSString * const AZServerApiPrefix = @"http://www.azging.com/dev/api/";
+NSString * const AZServerMobilePrefix = @"http://www.azging.com/dev/mobile/";
 
 
+//NSString * const AZServerDomain = @"http://www.azging.com/ging/";
+//NSString * const AZServerApiPrefix = @"http://www.azging.com/ging/api/";
+//NSString * const AZServerMobilePrefix = @"http://www.azging.com/ging/mobile/";
 
-NSString * const AZUriMobileActivBrief = @"activ/brief/";
-NSString * const AZUriMobileActivRoute = @"activ/route/";
-NSString * const AZUriMobileInvitePublishCoinsExplain = @"invite/publish/coins/explain/";
-NSString * const AZUriMobileInviteJoinCoinsExplain = @"invite/join/coins/explain/";
-NSString * const AZUriMobileActivShareDetail = @"activ/share/detail/";
-NSString * const AZUriMobileInviteShareDetaile = @"invite/share/detail/";
+
+//NSString * const AZServerDomain = @"http://47.93.28.215/ging/";
+//NSString * const AZServerApiPrefix = @"http://47.93.28.215/ging/api/";
+//NSString * const AZServerMobilePrefix = @"http://47.93.28.215/ging/mobile/";
+
+
 NSString * const AZUriMobileUserPolicy = @"user/policy/";
 NSString * const AZUriMobileReportUserPolicy = @"report/user/policy/";
 

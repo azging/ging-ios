@@ -19,11 +19,12 @@
                     </navigationBar>
                     <connections>
                         <segue destination="jeg-6x-KY1" kind="show" id="J7E-bl-1EF"/>
+                        <segue destination="vSR-zG-Wnm" kind="show" id="kIU-sM-Ocr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKu-2Y-oM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-610" y="-102"/>
+            <point key="canvasLocation" x="-858" y="286"/>
         </scene>
         <!--提问-->
         <scene sceneID="9FQ-iV-GtG">
@@ -49,7 +50,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我想问" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11I-re-jjo">
                                                         <rect key="frame" x="12" y="15.5" width="46" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.1647058824" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="一句话概括想问的事情" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hhc-cf-bVf">
@@ -89,7 +90,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04R-fI-fBI">
                                                         <rect key="frame" x="12" y="15.5" width="31" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.1647058824" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Xe-Ag-mQ1" customClass="SZTextView">
@@ -104,6 +105,9 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="说一说具体的问题信息，清楚明确的描述更容易获得答案"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="jeg-6x-KY1" id="2rp-YS-zpf"/>
+                                                        </connections>
                                                     </textView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sm4-7A-ZPc">
                                                         <rect key="frame" x="0.0" y="150" width="375" height="70"/>
@@ -190,7 +194,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入红包金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O2x-Mh-ju3">
-                                                        <rect key="frame" x="87" y="10" width="202" height="30"/>
+                                                        <rect key="frame" x="87" y="10" width="210" height="30"/>
+                                                        <color key="tintColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="kFH-0E-M93"/>
                                                         </constraints>
@@ -202,12 +207,8 @@
                                                             <outlet property="delegate" destination="jeg-6x-KY1" id="AcT-Ay-Hp4"/>
                                                         </connections>
                                                     </textField>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="unr-Yr-Smr">
-                                                        <rect key="frame" x="339" y="12.5" width="24" height="24"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="24" id="Lvc-1V-2RD"/>
-                                                            <constraint firstAttribute="width" constant="24" id="c7e-jC-0Wi"/>
-                                                        </constraints>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RewardLevel_1" translatesAutoresizingMaskIntoConstraints="NO" id="unr-Yr-Smr">
+                                                        <rect key="frame" x="347" y="16" width="16" height="17"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fc-JC-l3m" userLabel="Split Line">
                                                         <rect key="frame" x="0.0" y="49.5" width="375" height="0.5"/>
@@ -245,6 +246,7 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eon-Wz-snh">
                                                         <rect key="frame" x="314" y="9.5" width="51" height="31"/>
+                                                        <color key="onTintColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </switch>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hD-hG-c9V" userLabel="Split Line">
                                                         <rect key="frame" x="0.0" y="49.5" width="375" height="0.5"/>
@@ -288,7 +290,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvy-er-oDV">
-                                        <rect key="frame" x="12" y="489" width="351" height="44"/>
+                                        <rect key="frame" x="5" y="489" width="365" height="44"/>
                                         <color key="backgroundColor" red="0.9992554783821106" green="0.66736882925033569" blue="0.084085471928119659" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="WM6-UZ-eYv"/>
@@ -303,13 +305,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="SoJ-Vi-LdQ" firstAttribute="leading" secondItem="jZv-GT-EMy" secondAttribute="leading" id="3do-s0-EOJ"/>
-                                    <constraint firstItem="yvy-er-oDV" firstAttribute="leading" secondItem="jZv-GT-EMy" secondAttribute="leading" constant="12" id="57P-cb-Uyw"/>
+                                    <constraint firstItem="yvy-er-oDV" firstAttribute="leading" secondItem="jZv-GT-EMy" secondAttribute="leading" constant="5" id="57P-cb-Uyw"/>
                                     <constraint firstItem="SoJ-Vi-LdQ" firstAttribute="top" secondItem="jZv-GT-EMy" secondAttribute="top" id="DHa-LF-BfV"/>
                                     <constraint firstItem="yvy-er-oDV" firstAttribute="top" secondItem="SoJ-Vi-LdQ" secondAttribute="bottom" constant="80" id="EE3-VC-2np"/>
-                                    <constraint firstAttribute="trailing" secondItem="yvy-er-oDV" secondAttribute="trailing" constant="12" id="UTL-dW-E5S"/>
+                                    <constraint firstAttribute="trailing" secondItem="yvy-er-oDV" secondAttribute="trailing" constant="5" id="UTL-dW-E5S"/>
                                     <constraint firstItem="SoJ-Vi-LdQ" firstAttribute="width" secondItem="jZv-GT-EMy" secondAttribute="width" id="dWF-L3-rAn"/>
                                     <constraint firstAttribute="trailing" secondItem="SoJ-Vi-LdQ" secondAttribute="trailing" id="gKY-Ud-uUW"/>
-                                    <constraint firstAttribute="bottom" secondItem="yvy-er-oDV" secondAttribute="bottom" constant="40" id="yPL-Pk-ffl"/>
+                                    <constraint firstAttribute="bottom" secondItem="yvy-er-oDV" secondAttribute="bottom" constant="5" id="yPL-Pk-ffl"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -339,6 +341,94 @@
             </objects>
             <point key="canvasLocation" x="293.60000000000002" y="-102.09895052473765"/>
         </scene>
+        <!--提问详情-->
+        <scene sceneID="kJ2-PB-ILV">
+            <objects>
+                <viewController storyboardIdentifier="AZQuestionDetailVC" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="vSR-zG-Wnm" customClass="AZQuestionDetailVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TkE-3J-tbe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qoa-37-5s2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RTv-3C-9fd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6pR-se-Im2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vSR-zG-Wnm" id="w6f-yZ-XBR"/>
+                                    <outlet property="delegate" destination="vSR-zG-Wnm" id="6NH-Jc-LVb"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8A-fv-BJP" userLabel="Bottom View">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAs-te-aFl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                        <color key="backgroundColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="立即回答">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="answerAction:" destination="vSR-zG-Wnm" eventType="touchUpInside" id="gv0-Q7-AF6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eAs-te-aFl" firstAttribute="leading" secondItem="B8A-fv-BJP" secondAttribute="leading" id="ZFF-20-lYw"/>
+                                    <constraint firstAttribute="height" constant="49" id="cNc-eP-ILC"/>
+                                    <constraint firstAttribute="bottom" secondItem="eAs-te-aFl" secondAttribute="bottom" id="iXw-h4-faL"/>
+                                    <constraint firstItem="eAs-te-aFl" firstAttribute="top" secondItem="B8A-fv-BJP" secondAttribute="top" id="mqD-qQ-krX"/>
+                                    <constraint firstAttribute="trailing" secondItem="eAs-te-aFl" secondAttribute="trailing" id="yho-iZ-r6p"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVU-OC-P6v">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zbR-Cd-4Yd" appends="YES" id="7T1-1S-hDB"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="B8A-fv-BJP" secondAttribute="trailing" id="1uO-db-obi"/>
+                            <constraint firstItem="NVU-OC-P6v" firstAttribute="top" secondItem="TkE-3J-tbe" secondAttribute="bottom" id="3Xr-z6-1rX"/>
+                            <constraint firstItem="Qoa-37-5s2" firstAttribute="top" secondItem="B8A-fv-BJP" secondAttribute="bottom" id="82W-Vv-65f"/>
+                            <constraint firstItem="Qoa-37-5s2" firstAttribute="top" secondItem="NVU-OC-P6v" secondAttribute="bottom" id="Cft-Jh-HJZ"/>
+                            <constraint firstItem="B8A-fv-BJP" firstAttribute="top" secondItem="6pR-se-Im2" secondAttribute="bottom" id="E08-8f-hR9"/>
+                            <constraint firstItem="B8A-fv-BJP" firstAttribute="leading" secondItem="RTv-3C-9fd" secondAttribute="leading" id="FNV-du-4iG"/>
+                            <constraint firstAttribute="trailing" secondItem="6pR-se-Im2" secondAttribute="trailing" id="Fyw-Uk-g37"/>
+                            <constraint firstItem="6pR-se-Im2" firstAttribute="top" secondItem="TkE-3J-tbe" secondAttribute="bottom" id="ZAs-HR-FQv"/>
+                            <constraint firstAttribute="trailing" secondItem="NVU-OC-P6v" secondAttribute="trailing" id="c5I-Bw-7dK"/>
+                            <constraint firstItem="NVU-OC-P6v" firstAttribute="leading" secondItem="RTv-3C-9fd" secondAttribute="leading" id="fgk-j5-fBF"/>
+                            <constraint firstItem="6pR-se-Im2" firstAttribute="leading" secondItem="RTv-3C-9fd" secondAttribute="leading" id="s4K-8J-sfG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="提问详情" id="nPb-9z-28n">
+                        <barButtonItem key="rightBarButtonItem" image="NaviBarShareIcon" style="plain" id="vzr-dm-a4O">
+                            <connections>
+                                <action selector="shareAction:" destination="vSR-zG-Wnm" id="REU-HX-6r8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="answerBtn" destination="eAs-te-aFl" id="ncY-jO-WR1"/>
+                        <outlet property="shadowView" destination="NVU-OC-P6v" id="INY-40-622"/>
+                        <outlet property="tableView" destination="6pR-se-Im2" id="CqR-wZ-igN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rop-wv-PNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zbR-Cd-4Yd">
+                    <connections>
+                        <action selector="shadowViewAction:" destination="vSR-zG-Wnm" id="Trc-rl-ZkJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="293.60000000000002" y="657.12143928035982"/>
+        </scene>
         <!--发布成功-->
         <scene sceneID="bbz-hR-qsd">
             <objects>
@@ -362,7 +452,7 @@
                                     <outlet property="delegate" destination="TRn-OI-M1U" id="2H1-zA-gPN"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xj7-iE-54g" userLabel="Social Register">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xj7-iE-54g" userLabel="Social Share">
                                 <rect key="frame" x="0.0" y="436" width="375" height="148"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gad-ka-qzH" userLabel="Split">
@@ -448,7 +538,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz3-i5-CTh">
                                                 <rect key="frame" x="110" y="0.0" width="60" height="69.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CommonShareWechat" translatesAutoresizingMaskIntoConstraints="NO" id="pgG-5m-pfE">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CommonShareWxTimeline" translatesAutoresizingMaskIntoConstraints="NO" id="pgG-5m-pfE">
                                                         <rect key="frame" x="5" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="S6v-Uh-tW6"/>
@@ -519,8 +609,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="发布成功" id="Xwl-7Q-YCf">
-                        <barButtonItem key="rightBarButtonItem" title="完成" style="plain" id="fBY-qe-V6p"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" style="plain" id="fBY-qe-V6p">
+                            <connections>
+                                <action selector="finishButtonAction:" destination="TRn-OI-M1U" id="Nwc-LH-JxQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="iDF-xo-jTx" id="i96-6m-k4G"/>
+                        <outlet property="tableViewHeightConstraint" destination="afe-rA-ARj" id="H47-zu-wNY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2J-r8-ZGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -528,6 +626,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CommonShareWechat" width="40" height="40"/>
+        <image name="CommonShareWechat" width="55" height="44"/>
+        <image name="CommonShareWxTimeline" width="53" height="53"/>
+        <image name="NaviBarShareIcon" width="19" height="19"/>
+        <image name="RewardLevel_1" width="16" height="17"/>
     </resources>
 </document>

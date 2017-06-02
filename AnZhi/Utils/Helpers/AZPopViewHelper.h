@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class AZPopViewHelper;
+@class AZQuestionWrapper;
 
 @protocol AZPopViewHelperDelegate <NSObject>
 
@@ -21,5 +22,7 @@
 
 + (instancetype)sharedInstance;
 - (void)dismissPopupView;
+
+- (void)popSocailShareView:(AZQuestionWrapper *)wrapper;
 
 @end

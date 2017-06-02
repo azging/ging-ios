@@ -15,8 +15,10 @@
 //#import "UMSocialQQHandler.h"
 #import "WXApi.h"
 
-static NSString * const AZUMengAppKey = @"544fa9e4fd98c5a609008dae";
-static NSString * const AZUMengWechatSecret = @"6eea4567557edb7b492a13ec40fbc876";
+static NSString * const AZUMengAppKey = @"591bb126c62dca1799000801"; // azgign
+
+
+static NSString * const AZWechatSecret = @"90a8a9d411282c10d502766360093f8f";  // azging
 
 @implementation AZUMengHelper
 
@@ -51,8 +53,8 @@ static NSString * const AZUMengWechatSecret = @"6eea4567557edb7b492a13ec40fbc876
 // 初始化友盟社交分享
 - (void)initUMengSocialSDK {
     [[UMSocialManager defaultManager] setUmSocialAppkey:AZUMengAppKey];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:AZUMengWechatKey appSecret:AZUMengWechatSecret redirectURL:@"http://mobile.umeng.com/social"];
-        [WXApi registerApp:AZUMengWechatKey];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:AZWechatKey appSecret:AZWechatSecret redirectURL:@"http://mobile.umeng.com/social"];
+        [WXApi registerApp:AZWechatKey];
 }
 
 

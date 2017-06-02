@@ -12,7 +12,7 @@
 #import "AZFileUtil.h"
 #import "AZStringUtil.h"
 
-static const CGFloat AZImageUpLoadDefaultMaxSixe = 1024 * 1024 / 2;
+static const CGFloat AZImageUpLoadDefaultMaxSixe = 1024 * 1024 / 4;
 
 @implementation AZImageUtil
 
@@ -274,27 +274,6 @@ static const CGFloat AZImageUpLoadDefaultMaxSixe = 1024 * 1024 / 2;
 
 // 图片上传七牛
 + (void)uploadFileToQinu:(UIImage *)image imageType:(ImageCategory)category completion:(void (^)(NSString *))comp {
-//    NSData *imgData = [AZImageUtil getImageDataFromUIImage:image];
-//    NSString *fileType = [AZImageUtil getImageCategoryStringFromEnum:category];
-//    if (imgData.length > 1024 * 1024) {
-//        NSString *filePath = [AZFileUtil getImageTempFilePath];
-//        filePath = [filePath stringByAppendingString:[NSString stringWithFormat:@"_%ld",imgData.length]];
-//        BOOL success = [imgData writeToFile:filePath atomically:YES];
-//        if (success) {
-//            [AZUpLoadManager uploadFileToQinu:filePath fileType:fileType complete:^(NSString *fileUrlStr) {
-//                if (comp) {
-//                    comp(fileUrlStr);
-//                }
-//                [AZFileUtil removeFile:[NSURL fileURLWithPath:filePath]];
-//            }];
-//        }
-//    } else {
-//        [AZUpLoadManager uploadFileDataToQinu:imgData fileType:fileType complete:^(NSString *fileUrlStr) {
-//            if (comp) {
-//                comp(fileUrlStr);
-//            }
-//        }];
-//    }
     NSData *imgData = [AZImageUtil getDataOfCompressImageToDefaultSize:image];
     NSString *fileType = [AZImageUtil getImageCategoryStringFromEnum:category];
     [AZUpLoadManager uploadFileDataToQinu:imgData fileType:fileType complete:^(NSString *fileUrlStr) {

@@ -18,5 +18,10 @@
 + (void)requestAppConfigInit;
 + (void)requestAppConfigSet;
 
+// 获取七牛Token
++ (void)getQiniuUploadTokenOfFileType:(NSString *)fileType callBack:(void(^)(NSString *uploadToken, NSString *picKey, NSError *error))callBack;
+
+// 意见反馈
++ (void)requestAppFeedBackAdd:(NSString *)content callBack:(void(^)(NSError *error))callBack;
 
 @end

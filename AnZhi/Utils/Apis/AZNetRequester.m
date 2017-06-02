@@ -64,6 +64,37 @@
     }];
 }
 
+
+// 获取七牛Token
++ (void)getQiniuUploadTokenOfFileType:(NSString *)fileType callBack:(void(^)(NSString *uploadToken, NSString *picKey, NSError *error))callBack {
+    fileType = [AZStringUtil getNotNullStr:fileType];
+    NSDictionary *paramDic = @{@"Type" : fileType};
+    [[self createInstance] doPost:AZApiUriGetQINIUUploadToken params:paramDic requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            if (dataDic && !error) {
+                NSString *uploadToken = [dataDic objectForKey:@"UpToken"];
+                NSString *picKey = [dataDic objectForKey:@"PhotoKey"];
+                callBack(uploadToken, picKey, error);
+            } else {
+                callBack(nil,nil,error);
+            }
+        }
+    }];
+}
+
+// 意见反馈
++ (void)requestAppFeedBackAdd:(NSString *)content callBack:(void(^)(NSError *error))callBack {
+    content = [AZStringUtil getNotNullStr:content];
+    
+    NSDictionary *paramDic = @{@"Content":content,
+                               };
+    [[self createInstance] doPost:AZApiUriAppFeedbackAdd params:paramDic requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            callBack(error);
+        }
+    }];
+}
+
 + (instancetype)createInstance {
     return [[AZNetRequester alloc] init];
 }

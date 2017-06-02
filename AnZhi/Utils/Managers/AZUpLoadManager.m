@@ -11,39 +11,40 @@
 #import "AZStringUtil.h"
 #import "AZConstant.h"
 #import "AZFileUtil.h"
+#import "AZNetRequester.h"
 
 @implementation AZUpLoadManager
 
 + (void)uploadFileDataToQinu:(NSData *)data fileType:(NSString *)fileType complete:(void(^)(NSString *fileUrlStr))completionHandler {
-//    [AZNetRequester getQiniuUploadTokenOfFileType:fileType callBack:^(NSString *uploadToken, NSString *picKey, NSError *error) {
-//        if (error) {
-//            if (completionHandler) {
-//                completionHandler(nil);
-//            }
-//            return;
-//        }
-//        [AZUpLoadManager putData:data key:picKey token:uploadToken complete:^(NSString *fileUrlStr) {
-//            if (completionHandler) {
-//                completionHandler(fileUrlStr);
-//            }
-//        }];
-//    }];
+    [AZNetRequester getQiniuUploadTokenOfFileType:fileType callBack:^(NSString *uploadToken, NSString *picKey, NSError *error) {
+        if (error) {
+            if (completionHandler) {
+                completionHandler(nil);
+            }
+            return;
+        }
+        [AZUpLoadManager putData:data key:picKey token:uploadToken complete:^(NSString *fileUrlStr) {
+            if (completionHandler) {
+                completionHandler(fileUrlStr);
+            }
+        }];
+    }];
 }
 
 + (void)uploadFileToQinu:(NSString *)filePath fileType:(NSString *)fileType complete:(void(^)(NSString *fileUrlStr))completionHandler {
-//    [AZNetRequester getQiniuUploadTokenOfFileType:fileType callBack:^(NSString *uploadToken, NSString *picKey, NSError *error) {
-//        if (error) {
-//            if (completionHandler) {
-//                completionHandler(nil);
-//            }
-//            return;
-//        }
-//        [AZUpLoadManager putFile:filePath key:picKey token:uploadToken complete:^(NSString *fileUrlStr) {
-//            if (completionHandler) {
-//                completionHandler(fileUrlStr);
-//            }
-//        }];
-//    }];
+    [AZNetRequester getQiniuUploadTokenOfFileType:fileType callBack:^(NSString *uploadToken, NSString *picKey, NSError *error) {
+        if (error) {
+            if (completionHandler) {
+                completionHandler(nil);
+            }
+            return;
+        }
+        [AZUpLoadManager putFile:filePath key:picKey token:uploadToken complete:^(NSString *fileUrlStr) {
+            if (completionHandler) {
+                completionHandler(fileUrlStr);
+            }
+        }];
+    }];
 }
 
 + (void)putData:(NSData *)data key:(NSString *)key token:(NSString *)token complete:(void(^)(NSString *fileUrlStr))completionHandler {

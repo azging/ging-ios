@@ -197,7 +197,7 @@ const static NSInteger AZImageScorlAZellTimeInterval = 3.0f;
     self.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     // 只有存在page时，才有currentPageIndicator，否则设置self.pageControl.currentPageIndicatorTintColor会导致崩溃
     if (self.pageControl.numberOfPages > 0) {
-        self.pageControl.currentPageIndicatorTintColor = [AZColorUtil getColor:AZColorAppDuckr];
+        self.pageControl.currentPageIndicatorTintColor = [AZColorUtil getColor:AZColorApp];
     }
     
 //    [self.scrollView scrollRectToVisible:CGRectMake([AZAppUtil getDeviceWidth], 0, self.scrollView.frame.size.width, self.frame.size.height) animated:NO];

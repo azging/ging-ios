@@ -21,16 +21,6 @@ CF_EXPORT NSString * const AZServerDomain;
 CF_EXPORT NSString * const AZServerApiPrefix;
 CF_EXPORT NSString * const AZServerMobilePrefix;
 
-CF_EXPORT NSString * const AZServerXmppName;
-CF_EXPORT NSString * const AZServerXmppIp;
-CF_EXPORT NSInteger const AZServerXmppPort;
-
-CF_EXPORT NSString * const AZUriMobileActivBrief;
-CF_EXPORT NSString * const AZUriMobileActivRoute;
-CF_EXPORT NSString * const AZUriMobileInvitePublishCoinsExplain;
-CF_EXPORT NSString * const AZUriMobileInviteJoinCoinsExplain;
-CF_EXPORT NSString * const AZUriMobileActivShareDetail;
-CF_EXPORT NSString * const AZUriMobileInviteShareDetaile;
 CF_EXPORT NSString * const AZUriMobileUserPolicy;
 CF_EXPORT NSString * const AZUriMobileReportUserPolicy;
 
@@ -169,36 +159,36 @@ typedef enum : NSUInteger {
 
 
 typedef enum : NSInteger {
-    AZHomeVCTabType_Nearby          = 0,
-    AZHomeVCTabType_News            = 1,
-    AZHomeVCTabType_Hot             = 2,
+    AZHomeVCTabType_Nearby          = 0,  // 附近
+    AZHomeVCTabType_News            = 1,  // 最新
+    AZHomeVCTabType_Hot             = 2,  // 最热
 } AZHomeVCTabType;
 
 typedef enum : NSUInteger {
-    OrderPaymentType_Default    = 0,
-    OrderPaymentType_Ali        = 1,
-    OrderPaymentType_Wx         = 2,
-    OrderPaymentType_Coins      = 3,
-    OrderPaymentType_Free       = 4,
-} OrderPaymentType;
+    AZUserQuestionVCType_All            = 0,  // 全部
+    AZUserQuestionVCType_UnFinish       = 1,  // 未解决
+} AZUserQuestionVCType;
+
+typedef enum : NSUInteger {
+    AZUserAnswerVCType_All              = 0,   // 全部
+    AZUserAnswerVCType_Win              = 1,   // 获得红包
+} AZUserAnswerVCType;
+
 
 typedef enum : NSInteger {
-    AZCommonReportType_Default     = 0,
-    AZCommonReportType_Invite      = 1,
-    AZCommonReportType_Photo       = 2,
-} AZCommonReportType;
+    AZOrderPaymentType_Unknown          = 0, // 未知
+    AZOrderPaymentType_Wallet           = 1, // 余额
+    AZOrderPaymentType_Wx               = 2, // 微信
+} AZOrderPaymentType;
 
 typedef enum : NSInteger {
-    AZMsgNotifyVCType_AllMsg       = 0,
-    AZMsgNotifyVCType_Photo        = 1,
-} AZMsgNotifyVCType;
+    AZOrderTradeType_Unknown                = 0, // 未知
+    AZOrderTradeType_QuestionPublish        = 1, // 提问
+    AZOrderTradeType_AnswerAdopt            = 2, // 采纳答案
+    AZOrderTradeType_ToCash                 = 3, // 提现
+} AZOrderTradeType;
 
-typedef enum : NSInteger {
-    AZUserSearchType_Default            = 0,    // 搜索全部duckr用户
-    AZUserSearchType_Contact            = 1,    // 搜索用户的通讯录
-    AZUserSearchType_Focus              = 2,    // 搜索用户关注的人
-    AZUserSearchType_Fans               = 3,    // 搜索用户的粉丝
-    AZUserSearchType_PhoneContact       = 4,    // 搜索用户的手机通讯录
-} AZUserSearchType;
+
+
 
 #endif /* AZConstant_h */

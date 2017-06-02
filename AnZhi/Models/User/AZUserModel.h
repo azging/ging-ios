@@ -24,7 +24,7 @@
 @property (copy, nonatomic) NSString *nick;
 @property (copy, nonatomic) NSString *avatarUrl;
 @property (copy, nonatomic) NSString *thumbAvatarUrl;
-@property (assign, nonatomic) NSInteger gender;
+@property (assign, nonatomic) UserGender gender;
 @property (copy, nonatomic) NSString *telephone;
 
 

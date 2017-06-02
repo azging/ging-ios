@@ -35,7 +35,7 @@ CF_EXPORT NSString * const AZImageNameUserGenderFemale;
 
 CF_EXPORT NSString * const AZDefaultAvatarImageName;
 CF_EXPORT NSString * const AZDefaultCoverImageName;
-CF_EXPORT NSString * const AZCommonCameraAddIcon;
+CF_EXPORT NSString * const AZCommonPhotoAddIcon;
 
 CF_EXPORT NSString * const AZCommonLikeCellIcon;
 CF_EXPORT NSString * const AZCommonUnlikeCellIcon;

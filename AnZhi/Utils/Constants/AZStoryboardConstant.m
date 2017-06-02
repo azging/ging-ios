@@ -38,9 +38,11 @@ NSString * const VCIDRegisterVC = @"AZRegisterVC";
 
 NSString * const SBNameUser = @"User";
 NSString * const VCIDUserVC = @"AZUserVC";
+NSString * const VCIDUserQuestionVC = @"AZUserQuestionVC";
 
 
 #pragma mark - Common
 
 NSString * const SBNameCommon = @"Common";
 NSString * const VCIDWebVC = @"AZWebVC";
+NSString * const VCIDCommonPhotoShowVC = @"AZCommonPhotoShowVC";

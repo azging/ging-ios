@@ -40,7 +40,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSR-FW-xS1">
                                 <rect key="frame" x="0.0" y="64" width="375" height="49"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4qU-Gu-bGM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QuestionAddIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4qU-Gu-bGM">
                                         <rect key="frame" x="12" y="8" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="QmU-4u-Hkx"/>
@@ -50,7 +50,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有问题？问一下~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgX-dw-Efq">
                                         <rect key="frame" x="64" y="14" width="131" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.9992554783821106" green="0.66736882925033569" blue="0.084085471928119659" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L3-wa-Kdz">
@@ -63,13 +63,13 @@
                                             <action selector="questionButtonAction:" destination="R6s-Lm-xBi" eventType="touchUpInside" id="ZAT-9c-NTc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtJ-rm-6ad">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtJ-rm-6ad">
                                         <rect key="frame" x="326" y="0.0" width="49" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LtJ-rm-6ad" secondAttribute="height" multiplier="1:1" id="dt2-Sj-2ij"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
+                                        <state key="normal" image="CommonMoreIcon">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -110,13 +110,13 @@
                                     <constraint firstAttribute="height" constant="44" id="5nP-Fu-fXQ"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdZ-Xs-OlE">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdZ-Xs-OlE">
                                 <rect key="frame" x="0.0" y="162" width="375" height="505"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYu-al-phf">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYu-al-phf" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="1125" height="505"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cfc-qK-uKo">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cfc-qK-uKo">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
@@ -124,7 +124,7 @@
                                                     <outlet property="delegate" destination="R6s-Lm-xBi" id="xcv-Kn-ecV"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rm4-zt-9kG">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rm4-zt-9kG">
                                                 <rect key="frame" x="375" y="0.0" width="375" height="505"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
@@ -132,7 +132,7 @@
                                                     <outlet property="delegate" destination="R6s-Lm-xBi" id="3Eo-JZ-bmu"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-Gn-emQ">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-Gn-emQ">
                                                 <rect key="frame" x="750" y="0.0" width="375" height="505"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
@@ -188,7 +188,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="知应" id="cZu-L3-kvF">
-                        <barButtonItem key="rightBarButtonItem" title="人" style="plain" id="XcD-Y0-KvP">
+                        <barButtonItem key="rightBarButtonItem" image="UserInfoIcon" style="plain" id="XcD-Y0-KvP">
                             <connections>
                                 <action selector="userButtonAction:" destination="R6s-Lm-xBi" id="Vu9-Ld-WxT"/>
                             </connections>
@@ -207,4 +207,9 @@
             <point key="canvasLocation" x="-284" y="27.436281859070466"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CommonMoreIcon" width="24" height="5"/>
+        <image name="QuestionAddIcon" width="29" height="27"/>
+        <image name="UserInfoIcon" width="23" height="21"/>
+    </resources>
 </document>

@@ -2,7 +2,7 @@
 //  AZQuestionCell.m
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/23.
+//  Created by LHJ on 2017/5/23.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "AZQuestionWrapper.h"
 #import "AZViewUtil.h"
 #import "AZAppUtil.h"
+#import "AZSwitcherUtil.h"
 #import "AZImageCollectionCell.h"
 
 static const CGFloat AZQuestionImageGap = 5.0f;
@@ -20,6 +21,8 @@ static const CGFloat AZQuestionImageGap = 5.0f;
 @property (weak, nonatomic) IBOutlet UILabel *nickLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *rewardLevelIcon;
+@property (weak, nonatomic) IBOutlet UILabel *rewardLevelLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
@@ -75,11 +78,47 @@ static const CGFloat AZQuestionImageGap = 5.0f;
     self.nickLabel.text = [self createUser].nick;
     [AZViewUtil updateGenderImageView:self.genderImageView gender:[self createUser].gender];
     
+    [self updateRewardLevel];
+    
     self.titleLabel.text = questionWrapper.questionModel.title;
     self.descLabel.text = questionWrapper.questionModel.desc;
     
     [self updateShowPhotoView];
-    self.timeLabel.text = [NSString stringWithFormat:@"剩余%zd小时，已有%zd人回答，回答被选中者可获得红包", 28, 3];
+    [self updateQuestionStatus];
+}
+
+- (void)updateQuestionStatus {
+    self.timeLabel.text = @"";
+    if (AZQuestionStatus_ANSWERING ==  self.questionWrapper.questionModel.status) {
+        self.timeImageView.image = [UIImage imageNamed:@"QuestionTimeIcon"];
+        self.timeLabel.text = [NSString stringWithFormat:@"剩余%@，已有%zd人回答，回答被选中者可获得红包", self.questionWrapper.questionModel.expireTimeStr, self.questionWrapper.questionModel.answerNum];
+    } else if (self.questionWrapper.questionModel.status > AZQuestionStatus_ANSWERING) {
+        self.timeImageView.image = [UIImage imageNamed:@"QuestionFinishIcon"];
+        self.timeLabel.text = @"已结束";
+    }
+}
+
+- (void)updateRewardLevel {
+    
+    if (self.questionWrapper.questionModel.reward >= 100) {
+        self.rewardLevelIcon.hidden = YES;
+        self.rewardLevelLabel.text = [NSString stringWithFormat:@"¥ %f",self.questionWrapper.questionModel.reward];
+    } else {
+        self.rewardLevelIcon.hidden = NO;
+        self.rewardLevelLabel.text = @"";
+        
+        NSInteger level = self.questionWrapper.questionModel.reward / 10 + 1;
+        
+        NSString *iconName = @"RewardLevel_";
+        if (level < 6) {
+            iconName = [iconName stringByAppendingString:[NSString stringWithFormat:@"%zd", level]];
+        } else {
+            iconName = [iconName stringByAppendingString:@"6"];
+        }
+        
+        self.rewardLevelIcon.image = [UIImage imageNamed:iconName];
+    }
+    
 }
 
 - (void)updateShowPhotoView {
@@ -128,7 +167,7 @@ static const CGFloat AZQuestionImageGap = 5.0f;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
+    [AZSwitcherUtil presentToShowCommonPhotoShowVC:indexPath.row imageUrlArr:self.questionWrapper.questionModel.photoUrls imageThumbUrlArr:self.questionWrapper.questionModel.thumbPhotoUrls];
 }
 
 

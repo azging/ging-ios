@@ -2,7 +2,7 @@
 //  AZQuestionCell.h
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/23.
+//  Created by LHJ on 2017/5/23.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
@@ -11,8 +11,11 @@
 #import "AZColorUtil.h"
 #import "AZAppUtil.h"
 
-static const NSInteger AZTabViewNormalTextColor = 0xad7f2d;
-static const NSInteger AZTabViewSelectedTextColor = 0x2c2a28;
+#define AZTabViewNormalTextColor AZColorFontDefault
+#define AZTabViewSelectedTextColor AZColorApp
+
+//static const NSInteger AZTabViewNormalTextColor = 0xff841e;
+//static const NSInteger AZTabViewSelectedTextColor = 0x2c2a28;
 static const CGFloat AZTabViewMarkImageHeight = 3.0f;
 static const CGFloat AZTabViewAnimationTime = 0.1f;
 
@@ -93,10 +96,10 @@ static const CGFloat AZTabViewAnimationTime = 0.1f;
         
         [UIView transitionWithView:btn duration:AZTabViewAnimationTime options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseInOut animations:^{
             if (idx == self.selectIndex) {
-                [btn setTitleColor:[AZColorUtil getColor:AZTabViewNormalTextColor] forState:UIControlStateNormal];
+                [btn setTitleColor:[AZColorUtil getColor:AZTabViewSelectedTextColor] forState:UIControlStateNormal];
                 btn.titleLabel.font = [UIFont fontWithName:AZFontNameDefault size:[self getFontSizeSelected]];
             } else {
-                [btn setTitleColor:[AZColorUtil getColor:AZTabViewSelectedTextColor] forState:UIControlStateNormal];
+                [btn setTitleColor:[AZColorUtil getColor:AZTabViewNormalTextColor] forState:UIControlStateNormal];
                 btn.titleLabel.font = [UIFont fontWithName:AZFontNameDefault size:[self getFontSizeDeselected]];
             }
         } completion:nil];

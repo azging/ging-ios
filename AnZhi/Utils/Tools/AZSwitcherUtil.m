@@ -18,6 +18,11 @@
 #import "AZQuestionPublishFinishVC.h"
 #import "AZQuestionWrapper.h"
 #import "AZQuestionDetailVC.h"
+#import "AZUserVC.h"
+#import "AZUserQuestionVC.h"
+#import "AZRegisterVC.h"
+#import "AZCommonPhotoShowVC.h"
+#import "AZImageModel.h"
 
 @implementation AZSwitcherUtil
 
@@ -64,6 +69,62 @@
     AZQuestionPublishFinishVC *vc = [AZQuestionPublishFinishVC createInstance];
     vc.questionWrapper = questionWrapper;
     [AZSwitcherUtil pushToShowInDefaultNaviVC:vc];
+}
+
+
+#pragma mark - User
+
++ (void)pushToShowUserVC {
+    AZUserVC *vc = [AZUserVC createInstance];
+    [AZSwitcherUtil pushToShowInDefaultNaviVC:vc];
+}
+
++ (void)pushToShowUserQuestionVC {
+    AZUserQuestionVC *vc = [AZUserQuestionVC createInstance];
+    [AZSwitcherUtil pushToShowInDefaultNaviVC:vc];
+}
+
+
+#pragma mark - Register
+
++ (void)presentToShowRegisterVC {
+    AZRegisterVC *vc = [AZRegisterVC createInstance];
+    [AZSwitcherUtil presentToShowCommonNavRootVC:vc];
+}
+
+#pragma mark - AZCommonPhotoShowVC
+
++ (void)pushToShowCommonPhotoShowVC:(AZCommonPhotoShowVC *)photoShowVC {
+    [AZSwitcherUtil pushToShowInDefaultNaviVC:photoShowVC];
+}
+
++ (void)presentToShowCommonPhotoShowVC:(NSInteger)index imageModelArr:(NSArray *)imageModelArr {
+    AZCommonPhotoShowVC *vc = [AZCommonPhotoShowVC createInstance];
+    [vc showImageModelArr:imageModelArr index:index];
+    [AZSwitcherUtil presentToShowCommonNavRootVC:vc];
+}
+
++ (void)presentToShowCommonPhotoShowVC:(NSInteger)index imageArr:(NSArray *)imageArr {
+    AZCommonPhotoShowVC *vc = [AZCommonPhotoShowVC createInstance];
+    [vc showImageArr:imageArr index:index];
+    [AZSwitcherUtil presentToShowCommonNavRootVC:vc];
+}
+
++ (void)presentToShowCommonPhotoShowVC:(NSInteger)index imageUrlArr:(NSArray *)imageUrlArr imageThumbUrlArr:(NSArray *)imageThumbUrlArr {
+    [AZSwitcherUtil presentToShowCommonPhotoShowVC:index imageModelArr:[self getImageModelArrFromImageUrlArr:imageUrlArr imageThumbUrlArr:imageThumbUrlArr]];
+}
+
++ (NSArray *)getImageModelArrFromImageUrlArr:(NSArray *)imageUrlArr imageThumbUrlArr:(NSArray *)imageThumbUrlArr {
+    NSMutableArray *imageModelArr = [[NSMutableArray alloc] initWithCapacity:0];
+    for (int i = 0; i < imageThumbUrlArr.count; ++i) {
+        if (i < imageUrlArr.count) {
+            AZImageModel *imageModel = [[AZImageModel alloc] init];
+            imageModel.imageUrl = imageUrlArr[i];
+            imageModel.imageUrlThumb = imageThumbUrlArr[i];
+            [imageModelArr addObject:imageModel];
+        }
+    }
+    return imageModelArr;
 }
 
 

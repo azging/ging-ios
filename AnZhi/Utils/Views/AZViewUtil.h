@@ -32,7 +32,7 @@
 + (void)updateNavigationBarBackgroundTranslucent:(UINavigationBar *)naviBar;
 + (void)updateNavigationBarBackgroundPhotoShow:(UINavigationBar *)naviBar;
 + (void)updateNavigationBarBackgroundWhite:(UINavigationBar *)naviBar;
-+ (void)updateNavigationBarBackgroundDuckrColor:(UINavigationBar *)naviBar;
++ (void)updateNavigationBarBackgroundAPPColor:(UINavigationBar *)naviBar;
 
 + (void)setPopViewStatus:(BOOL)hide popUpView:(UIView *)popUpView;
 

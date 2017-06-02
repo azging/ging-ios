@@ -11,7 +11,7 @@
 #import "AZConstant.h"
 #import "CLLocation+Trans.h"
 
-static NSString * const AZAMapAppKey = @"b4ab368177b975732241b2cb4817e5ac";
+static NSString * const AZAMapAppKey = @"88ff48cb1c2b61d598ecbd9dee2c063c"; // azging
 
 @interface AZAMapManager () <AMapLocationManagerDelegate>
 

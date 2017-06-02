@@ -2,12 +2,14 @@
 //  AZNetRequester+User.h
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/19.
+//  Created by LHJ on 2017/5/19.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "AZNetRequester.h"
+#import "AZConstant.h"
+
 @class AZUserModel;
 
 
@@ -27,5 +29,14 @@
 
 // 用户退出登录
 + (void)requestUserLogoutCallBack:(void(^)(NSError *error))callBack;
+
+// 更新用户信息
++ (void)requestUpdateUserInfo:(AZUserModel *)userModel callBack:(void(^)(AZUserModel *userModel, NSError *error))callBack;
+
+// 我的提问列表
++ (void)requestUserQuestionList:(AZUserQuestionVCType)type orderStr:(NSString *)orderStr callBack:(void(^)(NSArray *questionWrapperArr, NSString *orderStr, NSError *error))callBack;
+
+// 我的回答列表
++ (void)requestUserAnswerList:(AZUserAnswerVCType)type orderStr:(NSString *)orderStr callBack:(void(^)(NSArray *questionWrapperArr, NSString *orderStr, NSError *error))callBack;
 
 @end

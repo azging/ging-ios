@@ -225,8 +225,8 @@
     [naviBar setBackgroundImage:[AZImageUtil getImageFromColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 }
 
-+ (void)updateNavigationBarBackgroundDuckrColor:(UINavigationBar *)naviBar {
-    [naviBar setBackgroundImage:[AZImageUtil getImageFromColor:[AZColorUtil getColor:AZColorAppDuckr]] forBarMetrics:UIBarMetricsDefault];
++ (void)updateNavigationBarBackgroundAPPColor:(UINavigationBar *)naviBar {
+    [naviBar setBackgroundImage:[AZImageUtil getImageFromColor:[AZColorUtil getColor:AZColorApp]] forBarMetrics:UIBarMetricsDefault];
     [naviBar setTintColor:[AZColorUtil getColor:AZColorNaviFontDefault]];
 }
 

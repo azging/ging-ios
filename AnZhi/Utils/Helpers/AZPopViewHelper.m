@@ -11,10 +11,11 @@
 #import <KLCPopup/KLCPopup.h>
 #import "AZConstant.h"
 #import "AZAlertUtil.h"
+#import "AZShareView.h"
+#import "AZQuestionWrapper.h"
 
-@interface AZPopViewHelper()
+@interface AZPopViewHelper() <AZShareViewDelegate>
 @property (strong, nonatomic) KLCPopup *commonPopup;
-@property (assign, nonatomic) BOOL isShowNewVersionUpdateView;
 
 @end
 
@@ -35,6 +36,26 @@
 
 - (void)cancelButtonClick {
     [self.commonPopup dismissPresentingPopup];
+}
+
+
+- (void)popSocailShareView:(AZQuestionWrapper *)wrapper {
+    AZShareView *shareView = [AZShareView createInstance];
+    shareView.delegate = self;
+    [shareView updateShareView:wrapper];
+    self.commonPopup = [KLCPopup popupWithContentView:shareView
+                                             showType:KLCPopupShowTypeBounceInFromBottom
+                                          dismissType:KLCPopupDismissTypeBounceOutToBottom
+                                             maskType:KLCPopupMaskTypeDimmed
+                             dismissOnBackgroundTouch:YES
+                                dismissOnContentTouch:NO];
+    self.commonPopup.dimmedMaskAlpha = AZAlertViewMaskAlpha;
+    CGFloat topSpace = [AZAppUtil getDeviceHeight] - [shareView getShareViewHeight] / 2.0f;
+    [self.commonPopup showAtCenter:CGPointMake([AZAppUtil getDeviceWidth] / 2, topSpace) inView:nil];
+}
+
+- (void)cancelShareAction:(AZShareView *)view {
+    [self dismissPopupView];
 }
 
 @end

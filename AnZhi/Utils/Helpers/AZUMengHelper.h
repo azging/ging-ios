@@ -14,7 +14,7 @@
 #include <net/if_dl.h>
 #import <UMSocialCore/UMSocialCore.h>
 
-static NSString * const AZUMengWechatKey = @"wx18a5f802e5e464e0";
+static NSString * const AZWechatKey = @"wx44d1d7ca25302f9d";  // azging
 
 @interface AZUMengHelper : NSObject
 

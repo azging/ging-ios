@@ -2,13 +2,14 @@
 //  AZNetRequester+User.m
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/19.
+//  Created by LHJ on 2017/5/19.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
 #import "AZNetRequester+User.h"
 #import "AZDataManager.h"
 #import "AZUserModel.h"
+#import "AZQuestionWrapper.h"
 
 @implementation AZNetRequester (User)
 
@@ -35,7 +36,6 @@
             if (dataDic) {
                 NSDictionary *userDic = [dataDic dicOfObjectForKey:@"User"];
                 AZUserModel *user = [AZUserModel modelWithDict:userDic];
-                [AZDataManager sharedInstance].userModel = user;
                 callBack(user, error);
             } else {
                 callBack(nil, error);
@@ -102,6 +102,95 @@
     }];
 }
 
+// 更新用户信息
++ (void)requestUpdateUserInfo:(AZUserModel *)userModel callBack:(void(^)(AZUserModel *userModel, NSError *error))callBack {
+    NSString *nick          = [AZStringUtil getNotNullStr:userModel.nick];
+    NSNumber *gender        = [NSNumber numberWithInteger:userModel.gender];
+    NSString *avatarUrl     = [AZStringUtil getNotNullStr:userModel.avatarUrl];
 
+    NSDictionary *paramDic = @{@"Nick":nick,
+                               @"Gender":gender,
+                               @"AvatarUrl":avatarUrl,
+                               
+                               };
+    [[self createInstance] doPost:AZApiUriUserInfoUpdate params:paramDic requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            if (!error) {
+                AZUserModel *userModel = [AZUserModel modelWithDict:[dataDic dicOfObjectForKey:@"User"]];
+                [AZDataManager sharedInstance].userModel = userModel;
+                [[AZDataManager sharedInstance] saveData];
+                callBack(userModel, error);
+            } else {
+                callBack(nil, error);
+            }
+        }
+    }];
+}
+
+
+
+
+// 我的提问列表
++ (void)requestUserQuestionList:(AZUserQuestionVCType)type orderStr:(NSString *)orderStr callBack:(void(^)(NSArray *questionWrapperArr, NSString *orderStr, NSError *error))callBack {
+    orderStr = [AZStringUtil getNotNullStr:orderStr];
+    
+    NSDictionary *params = @{@"OrderStr":orderStr,
+                             @"StatusType":[NSNumber numberWithInteger:type],
+                             };
+
+    [[self createInstance] doPost:AZApiUriUserQuestionList params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            if (!error) {
+                NSArray *questionJsonArr = [dataDic objectForKey:@"QuestionWrapperList"];
+                NSString *orderStr = [dataDic objectForKey:@"OrderStr"];
+                
+                NSMutableArray *mutArr = [[NSMutableArray alloc] init];
+                
+                for (NSDictionary *dic in questionJsonArr) {
+                    AZQuestionWrapper *questionWrapper = [AZQuestionWrapper modelWithDict:dic];
+                    if ([questionWrapper isValidData]) {
+                        [mutArr addObject:questionWrapper];
+                    }
+                }
+                
+                callBack(mutArr, orderStr, error);
+            } else {
+                callBack(nil, @"", error);
+            }
+        }
+    }];
+}
+
+
+// 我的回答列表
++ (void)requestUserAnswerList:(AZUserAnswerVCType)type orderStr:(NSString *)orderStr callBack:(void(^)(NSArray *questionWrapperArr, NSString *orderStr, NSError *error))callBack {
+    orderStr = [AZStringUtil getNotNullStr:orderStr];
+    
+    NSDictionary *params = @{@"OrderStr":orderStr,
+                             @"StatusType":[NSNumber numberWithInteger:type],
+                             };
+    
+    [[self createInstance] doPost:AZApiUriUserAnswerList params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            if (!error) {
+                NSArray *questionJsonArr = [dataDic objectForKey:@"QuestionWrapperList"];
+                NSString *orderStr = [dataDic objectForKey:@"OrderStr"];
+                
+                NSMutableArray *mutArr = [[NSMutableArray alloc] init];
+                
+                for (NSDictionary *dic in questionJsonArr) {
+                    AZQuestionWrapper *questionWrapper = [AZQuestionWrapper modelWithDict:dic];
+                    if ([questionWrapper isValidData]) {
+                        [mutArr addObject:questionWrapper];
+                    }
+                }
+                
+                callBack(mutArr, orderStr, error);
+            } else {
+                callBack(nil, @"", error);
+            }
+        }
+    }];
+}
 
 @end

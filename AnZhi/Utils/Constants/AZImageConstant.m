@@ -33,7 +33,7 @@ NSString * const AZImageNameUserGenderFemale = @"UserGenderFemale";
 
 NSString * const AZDefaultAvatarImageName = @"CommonAvatarIcon";
 NSString * const AZDefaultCoverImageName = @"CommonCoverImage";
-NSString * const AZCommonCameraAddIcon = @"CommonCameraAddIcon";
+NSString * const AZCommonPhotoAddIcon = @"CommonPhotoAddIcon";
 
 NSString * const AZCommonLikeCellIcon = @"CommonLikeCellIcon";
 NSString * const AZCommonUnlikeCellIcon = @"CommonUnlikeCellIcon";

@@ -15,13 +15,13 @@
 #pragma mark - App
 CF_EXPORT NSString * const AZApiUriAppConfigInit;
 CF_EXPORT NSString * const AZApiUriAppConfigSet;
+CF_EXPORT NSString * const AZApiUriAppFeedbackAdd;
 
 
 #pragma mark - Common
 
 CF_EXPORT NSString * const AZApiUriGetQINIUUploadToken;
 CF_EXPORT NSString * const AZApiUriQINIUDomain;
-CF_EXPORT NSString * const AZApiUriGetSchoolList;
 
 
 #pragma mark - User
@@ -32,9 +32,11 @@ CF_EXPORT NSString * const AZApiUriUserLogInPhone;
 CF_EXPORT NSString * const AZApiUriUserLogout;
 
 
-
 CF_EXPORT NSString * const AZApiUriUserInfoUpdate;
 CF_EXPORT NSString * const AZApiUriUserInfo;
+
+CF_EXPORT NSString * const AZApiUriUserQuestionList;
+CF_EXPORT NSString * const AZApiUriUserAnswerList;
 
 
 
@@ -47,5 +49,13 @@ CF_EXPORT NSString * const AZApiUriQuestionListNearby;
 CF_EXPORT NSString * const AZApiUriQuestionListNews;
 CF_EXPORT NSString * const AZApiUriQuestionListHot;
 
+CF_EXPORT NSString * const AZApiUriQuestionAnswerList;
+CF_EXPORT NSString * const AZApiUriQuestionAnswerAdd;
+
+
+#pragma mark - Order 
+
+CF_EXPORT NSString * const AZApiUriOrderAdd;
+CF_EXPORT NSString * const AZApiUriOrderDetail;
 
 #endif /* AZApiConstant_h */

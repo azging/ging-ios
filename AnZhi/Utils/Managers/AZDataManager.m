@@ -80,7 +80,6 @@
     [self saveData];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    [userDefaults removeObjectForKey:NSStringFromSelector(@selector(userInfo))];
     [userDefaults removeObjectForKey:NSStringFromSelector(@selector(userModel))];
     self.userModel = nil;
 

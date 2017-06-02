@@ -42,6 +42,7 @@ CF_EXPORT NSString * const VCIDRegisterVC;
 
 CF_EXPORT NSString * const SBNameUser;
 CF_EXPORT NSString * const VCIDUserVC;
+CF_EXPORT NSString * const VCIDUserQuestionVC;
 
 
 
@@ -49,6 +50,7 @@ CF_EXPORT NSString * const VCIDUserVC;
 
 CF_EXPORT NSString * const SBNameCommon;
 CF_EXPORT NSString * const VCIDWebVC;
+CF_EXPORT NSString * const VCIDCommonPhotoShowVC;
 
 #endif /* AZStoryboardConstant_h */
 

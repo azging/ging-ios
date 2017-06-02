@@ -11,6 +11,7 @@
 
 @class AZWebVC;
 @class AZQuestionWrapper;
+@class AZCommonPhotoShowVC;
 
 @interface AZSwitcherUtil : NSObject
 
@@ -31,6 +32,25 @@
 
 + (void)pushToShowQuestionPublishVC;
 + (void)pushToShowQuestionPublishFinishVC:(AZQuestionWrapper *)questionWrapper;
+
+
+#pragma mark - User
+
++ (void)pushToShowUserVC;
++ (void)pushToShowUserQuestionVC;
+
+#pragma mark - Register
+
++ (void)presentToShowRegisterVC;
+
+
+#pragma mark - AZCommonPhotoShowVC
+
++ (void)pushToShowCommonPhotoShowVC:(AZCommonPhotoShowVC *)photoShowVC;
++ (void)presentToShowCommonPhotoShowVC:(NSInteger)index imageModelArr:(NSArray *)imageModelArr;
++ (void)presentToShowCommonPhotoShowVC:(NSInteger)index imageArr:(NSArray *)imageArr;
++ (void)presentToShowCommonPhotoShowVC:(NSInteger)index imageUrlArr:(NSArray *)imageUrlArr imageThumbUrlArr:(NSArray *)imageThumbUrlArr;
++ (NSArray *)getImageModelArrFromImageUrlArr:(NSArray *)imageUrlArr imageThumbUrlArr:(NSArray *)imageThumbUrlArr;
 
 
 @end

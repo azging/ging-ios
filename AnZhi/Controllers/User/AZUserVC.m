@@ -8,8 +8,17 @@
 
 #import "AZUserVC.h"
 #import "AZUtil.h"
+#import "AZNetRequester+User.h"
+#import "AZDataManager.h"
 
 @interface AZUserVC ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nickLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
 @end
 
@@ -19,9 +28,56 @@
     return (AZUserVC *)[AZStoryboardUtil getViewController:SBNameUser identifier:VCIDUserVC];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [AZViewUtil updateNavigationBarBackgroundTranslucent:self.navigationController.navigationBar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [AZViewUtil updateNavigationBarBackgroundWhite:self.navigationController.navigationBar];
+}
+
+- (void)initVariable {
+    [super initVariable];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self updateShow];
+}
+
+- (void)refreshData {
+    if ([NotificationRefreshReasonViewWillAppear isEqualToString:self.refreshDataReason]) {
+        [self updateShow];
+    } else {
+        [self updateShow];
+    }
+}
+
+- (void)initObserverNotification {
+    [self addObserverNotificationNameToRefreshData:AZApiUriUserInfoUpdate];
+}
+
+- (AZUserModel *)getUserModel {
+    return [AZDataManager sharedInstance].userModel;
+}
+
+- (void)updateShow {
+    [AZViewUtil updateViewCircular:self.avatarImageView];
+    [AZViewUtil updateAvatarImageView:self.avatarImageView url:[self getUserModel].thumbAvatarUrl];
+    self.nickLabel.text = [self getUserModel].nick;
+    
+    [AZViewUtil updateGenderImageView:self.genderImageView gender:[self getUserModel].gender];
+}
+
+- (IBAction)logoutButtonAction:(id)sender {
+    [AZNetRequester requestUserLogoutCallBack:^(NSError *error) {
+    }];
+    
+    [[AZDataManager sharedInstance] clearUserDefaultForLogout];
+    [[AZDataManager sharedInstance] saveData];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

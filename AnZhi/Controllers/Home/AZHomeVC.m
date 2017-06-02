@@ -15,6 +15,7 @@
 #import "AZRefreshNormalHeader.h"
 #import "AZRefreshAutoNormalFooter.h"
 #import "AZNetRequester+Question.h"
+#import "AZDataManager.h"
 
 
 @interface AZHomeVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, AZTopTabViewDelegate>
@@ -72,7 +73,9 @@
     [self initNewsTableView];
     [self initHotTableView];
 
-    
+    [self headerRefreshAction];
+    [self requestNewsList];
+    [self requestHotList];
 }
 
 
@@ -121,10 +124,6 @@
     self.hotTableView.mj_footer.hidden = YES;
 }
 
-
-
-
-
 //- (void)initBlankContentView {
 //    self.hotBlankView = [[AZBlankContentView alloc] initWithTitle:@"暂时还没有玩乐记录，右上角发一个吧！"];
 //    [self.hotTableView insertSubview:self.hotBlankView atIndex:0];
@@ -142,7 +141,13 @@
 //    self.hotContentArr = [[AZDataBufferManager sharedInstance] refreshPhotoWrapperArr:self.hotContentArr];
 //    self.newsContentArr = [[AZDataBufferManager sharedInstance] refreshPhotoWrapperArr:self.newsContentArr];
 //    self.nearbyContentArr = [[AZDataBufferManager sharedInstance] refreshPhotoWrapperArr:self.nearbyContentArr];
-    [self updateShow];
+   
+    
+    if ([NotificationRefreshReasonViewWillAppear isEqualToString:self.refreshDataReason]) {
+        [self updateShow];
+    } else {
+        [self headerRefreshAction];
+    }
 }
 
 
@@ -277,7 +282,7 @@
     __weak typeof (self)weakSelf = self;
     NSString *selfOrderStr = self.nearbyOrderStr;
     [AZNetRequester requestQuestionList:AZHomeVCTabType_Nearby orderStr:selfOrderStr callBack:^(NSArray *questionWrapperArr, NSString *orderStr, NSError *error) {
-        [AZViewUtil updateShowMJRefresh:weakSelf.nearbyTableView.mj_header footer:weakSelf.newsTableView.mj_footer selfOrderStr:selfOrderStr orderStr:orderStr error:error];
+        [AZViewUtil updateShowMJRefresh:weakSelf.nearbyTableView.mj_header footer:weakSelf.nearbyTableView.mj_footer selfOrderStr:selfOrderStr orderStr:orderStr error:error];
         if (!error) {
             if ([AZStringUtil isNullString:selfOrderStr]) {
                 weakSelf.nearbyContentArr = [[NSArray alloc] init];
@@ -290,7 +295,7 @@
         } else {
             [AZAlertUtil tipOneMessage:error.domain];
         }
-        weakSelf.newsTableView.mj_footer.hidden = weakSelf.nearbyContentArr.count == 0;
+        weakSelf.nearbyTableView.mj_footer.hidden = weakSelf.nearbyContentArr.count == 0;
     }];
 }
 
@@ -321,6 +326,17 @@
     return 1;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.nearbyTableView) {
+        return self.nearbyContentArr.count;
+    } else if (tableView == self.newsTableView) {
+        return self.newsContentArr.count;
+    } else if (tableView == self.hotTableView) {
+        return self.hotContentArr.count;
+    }
+    return 0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AZQuestionWrapper *wrapper = nil;
     if (tableView == self.nearbyTableView) {
@@ -340,16 +356,6 @@
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.nearbyTableView) {
-        return self.nearbyContentArr.count;
-    } else if (tableView == self.newsTableView) {
-        return self.newsContentArr.count;
-    } else if (tableView == self.hotTableView) {
-        return self.hotContentArr.count;
-    }
-    return 0;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -369,6 +375,11 @@
 #pragma mark - Button Actions
 
 - (IBAction)userButtonAction:(id)sender {
+    if (![[AZDataManager sharedInstance] isUserLogin]) {
+        [AZSwitcherUtil presentToShowRegisterVC];
+        return;
+    }
+    [AZSwitcherUtil pushToShowUserVC];
 }
 
 - (IBAction)questionButtonAction:(id)sender {
@@ -376,7 +387,11 @@
 }
 
 - (IBAction)moreButtonAction:(id)sender {
-    
+    if (![[AZDataManager sharedInstance] isUserLogin]) {
+        [AZSwitcherUtil presentToShowRegisterVC];
+        return;
+    }
+    [AZSwitcherUtil pushToShowUserQuestionVC];
 }
 
 - (void)didReceiveMemoryWarning {

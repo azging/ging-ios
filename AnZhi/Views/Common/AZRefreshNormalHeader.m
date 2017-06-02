@@ -29,7 +29,7 @@
 - (UIActivityIndicatorView *)loadingView {
     if (!_loadingView) {
         UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorViewStyle];
-        loadingView.color = [AZColorUtil getColor:AZColorAppDuckr];
+        loadingView.color = [AZColorUtil getColor:AZColorApp];
         loadingView.hidesWhenStopped = YES;
         [self addSubview:_loadingView = loadingView];
     }

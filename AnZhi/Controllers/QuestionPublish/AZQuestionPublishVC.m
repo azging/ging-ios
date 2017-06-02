@@ -12,21 +12,26 @@
 #import "UIImage+Upload.h"
 #import "AZImageUploadCell.h"
 #import "AZNetRequester+Question.h"
+#import "AZNetRequester+Order.h"
+#import "AZQuestionWrapper.h"
+#import "AZOrderWrapper.h"
+#import "AZPayHelper.h"
 
 static const CGFloat AZQuestionPublishImageGap = 5.0f;
 static const NSInteger AZQuestionPublishImageMaxNum = 3;
 static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 
-@interface AZQuestionPublishVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AZImageUploadCellDelegate>
+static const NSInteger AZQuestionDescTextLenghtMax = 280;
+
+
+@interface AZQuestionPublishVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AZImageUploadCellDelegate, UITextViewDelegate, AZPayHelperDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTF;
-
 @property (weak, nonatomic) IBOutlet SZTextView *descTextView;
-
 @property (weak, nonatomic) IBOutlet UILabel *descCountLabel;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 @property (strong, nonatomic) NSArray *imageArr;
-
 
 @property (weak, nonatomic) IBOutlet UITextField *paymentTF;
 @property (weak, nonatomic) IBOutlet UIImageView *paymentIcon;
@@ -34,6 +39,10 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 @property (weak, nonatomic) IBOutlet UIButton *publishButton;
 
 @property (assign, nonatomic) NSInteger uploadTimes;
+
+@property (strong, nonatomic) AZPayHelper *payHelper;
+
+@property (strong, nonatomic) AZQuestionWrapper *questionWrapper;
 
 @end
 
@@ -45,7 +54,7 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 
 - (NSArray *)imageArr {
     if (![AZArrayUtil isValidArray:_imageArr]) {
-        UIImage *image = [UIImage imageNamed:AZCommonCameraAddIcon];
+        UIImage *image = [UIImage imageNamed:AZCommonPhotoAddIcon];
         _imageArr = [[NSArray alloc] initWithObjects:image, nil];
     }
     return _imageArr;
@@ -54,18 +63,39 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
     [self initCollectionView];
 }
 
-
 - (void)initCollectionView {
-//    [self.photoCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([AZImageUploadCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AZImageUploadCell class])];
+}
+
+- (IBAction)paymentTFEditingChanged:(UITextField *)sender {
+    [self updateRewardLevel:[sender.text doubleValue]];
+}
+
+- (void)updateRewardLevel:(CGFloat)reward {
+    if (reward >= 100 && reward > 0) {
+        self.paymentIcon.hidden = YES;
+    } else {
+        self.paymentIcon.hidden = NO;
+        NSInteger level = reward / 10 + 1;
+        NSString *iconName = @"RewardLevel_";
+        if (level < 6) {
+            iconName = [iconName stringByAppendingString:[NSString stringWithFormat:@"%zd", level]];
+        } else {
+            iconName = [iconName stringByAppendingString:@"6"];
+        }
+        self.paymentIcon.image = [UIImage imageNamed:iconName];
+    }
 }
 
 
-- (IBAction)paymentTFEditingChanged:(UITextField *)sender {
+- (void)textViewDidChange:(UITextView *)textView {
+    if (textView.text.length > AZQuestionDescTextLenghtMax) {
+        [AZAlertUtil tipOneMessage:[NSString stringWithFormat:@"最多输入%zd个字哦",AZQuestionDescTextLenghtMax]];
+        return;
+    }
+    self.descCountLabel.text = [NSString stringWithFormat:@"%zd/%zd",textView.text.length,AZQuestionDescTextLenghtMax];
 }
 
 
@@ -116,10 +146,9 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
         } cancel:nil];
     } else {
         NSArray *imageArr = [AZArrayUtil removeRearObj:self.imageArr];
-//        [AZSwitcherUtil presentToShowCommonPhotoShowVC:indexPath.row imageArr:imageArr];
+        [AZSwitcherUtil presentToShowCommonPhotoShowVC:indexPath.row imageArr:imageArr];
     }
 }
-
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -149,8 +178,8 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
         [AZAlertUtil tipOneMessage:@"请输入问题描述"];
         return NO;
     }
-    if ([self.paymentTF.text floatValue] < 0.01) {
-        [AZAlertUtil tipOneMessage:@"请输入正确的红包金额"];
+    if ([self.paymentTF.text doubleValue] < 0.01) {
+        [AZAlertUtil tipOneMessage:@"金额不能少于¥0.01哦"];
         return NO;
     }
     return YES;
@@ -167,7 +196,7 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
     self.uploadTimes = 0;
     [AZAlertUtil showHudWithHint:@"正在发布..."];
     
-    [self requesetQuestionPublish];
+    [self questionPublish];
 }
 
 
@@ -189,23 +218,21 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
         }
         UIImage *image = (UIImage *)obj;
         if (image.uploadFinished && [AZStringUtil isNotNullString:image.photoUrl]) {
-            [self requesetQuestionPublish];
+            [self questionPublish];
             return;
         }
         [AZImageUtil uploadFileToQinu:image imageType:ImageCategoryPhoto completion:^(NSString *imgUrl) {
             image.photoUrl = imgUrl;
             image.uploadFinished = YES;
             
-            [self requesetQuestionPublish];
+            [self questionPublish];
         }];
     }];
     
 }
 
-- (void)requesetQuestionPublish {
-    
+- (void)questionPublish {
     NSArray *uploadImageArr = [AZArrayUtil removeRearObj:self.imageArr];
-
     NSMutableArray *uploadUrlArr = [NSMutableArray array];
     for (UIImage *image in uploadImageArr) {
         if (image.uploadFinished && [AZStringUtil isNotNullString:image.photoUrl]) {
@@ -217,11 +244,17 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
             return;
         }
     }
+    
+    [self requestQuestionPublish:uploadImageArr];
+}
 
-    [AZNetRequester requestQuestionPublish:self.titleTF.text desc:self.descTextView.text photoUrlArr:uploadImageArr reward:[self.paymentTF.text floatValue] isAnonymous:self.anonymousSwitch.on callBack:^(AZQuestionWrapper *questionWrapper, NSError *error) {
+- (void)requestQuestionPublish:(NSArray *)uploadImageArr {
+    [AZNetRequester requestQuestionPublish:self.titleTF.text desc:self.descTextView.text photoUrlArr:uploadImageArr reward:[self.paymentTF.text doubleValue] isAnonymous:self.anonymousSwitch.on callBack:^(AZQuestionWrapper *questionWrapper, NSError *error) {
+        
         [AZAlertUtil hideHud];
         if (!error) {
-            [AZSwitcherUtil pushToShowQuestionPublishFinishVC:questionWrapper];
+            self.questionWrapper = questionWrapper;
+            [self addOrder:questionWrapper];
         } else {
             [AZAlertUtil tipOneMessage:error.domain];
         }
@@ -229,19 +262,65 @@ static const NSInteger AZQuestionPublishImageHeight = 70.0f;
 }
 
 
+- (void)addOrder:(AZQuestionWrapper *)questionWrapper {
+    self.payHelper = [[AZPayHelper alloc] initWithDelegate:self];
+    [self.payHelper callWxPay:questionWrapper.questionModel.quid auid:@"" amount:[self.paymentTF.text doubleValue] paymentType:AZOrderPaymentType_Wx tradeType:AZOrderTradeType_QuestionPublish];
+}
+
+
+- (void)paymentHelper:(AZPayHelper *)paymentHelper didPaySucceed:(BOOL)issucceed order:(AZOrderWrapper *)orderWrapper error:(NSError *)error {
+    
+    //前端支付完成，向后端验证支付状态
+    [AZAlertUtil showHudWithHint:@"正在处理"];
+
+//    [NSThread sleepForTimeInterval:0.5f];
+    
+    //第一次验证订单
+    [AZNetRequester requestOrderDetail:orderWrapper.orderModel.ouid callBack:^(AZOrderWrapper *orderWrapper, NSError *error) {
+        if (error) {
+            //第二次验证订单
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [AZNetRequester requestOrderDetail:orderWrapper.orderModel.ouid callBack:^(AZOrderWrapper *orderWrapper, NSError *error) {
+                    if (error) {
+                        //第三次验证订单
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [AZNetRequester requestOrderDetail:orderWrapper.orderModel.ouid callBack:^(AZOrderWrapper *orderWrapper, NSError *error) {
+                                [AZAlertUtil hideHud];
+                                if (error) {
+                                    [AZAlertUtil tipOneMessage:@"正在处理您的提问，稍后您可以在我的提问中查看"];
+                                    UINavigationController *naviVC = [AZAppUtil getTopMostNavigationController];
+                                    [naviVC popViewControllerAnimated:YES];
+                                }else{
+                                    [self paySuccessPushToFinish];
+                                }
+                            }];
+                        });
+                    } else {
+                        [AZAlertUtil hideHud];
+                        [self paySuccessPushToFinish];
+                    }
+                }];
+            });
+        } else {
+            [AZAlertUtil hideHud];
+            [self paySuccessPushToFinish];
+        }
+    }];
+}
+
+- (void)paySuccessPushToFinish {
+    
+    [AZNetRequester requestQuestionDetail:self.questionWrapper.questionModel.quid callBack:^(AZQuestionWrapper *questionWrapper, NSError *error) {
+        
+    }];
+    [AZSwitcherUtil pushToShowQuestionPublishFinishVC:self.questionWrapper];
+
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -132,7 +132,7 @@
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:AZImageNameNaviBarBackIcon]];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[[UIImage imageNamed:AZImageNameNaviBarBackIcon] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setBackgroundImage:[AZImageUtil getImageFromColor:[AZColorUtil getColor:AZColorAppDuckr]] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[AZImageUtil getImageFromColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)requestAppConfigInit {
@@ -147,36 +147,17 @@
     //2017.3.31测试通过，不再崩溃
     [[UMSocialManager defaultManager] handleOpenURL:url];
     
-    if ([[url scheme] isEqualToString:AZUMengWechatKey]) {
+    if ([[url scheme] isEqualToString:AZWechatKey]) {
         [WXApi handleOpenURL:url delegate:self];
     }
 }
 
 #pragma mark - WxPay Delegate
 
--(void)onResp:(BaseResp*)resp {
-    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-    NSString *strTitle;
-    
+- (void)onResp:(BaseResp*)resp {
     if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
-        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
     }
     if ([resp isKindOfClass:[PayResp class]]) {
-        // 支付返回结果，实际支付结果需要去微信服务器端查询
-        strTitle = [NSString stringWithFormat:@"支付结果"];
-        
-        switch (resp.errCode) {
-            case WXSuccess:
-                strMsg = @"支付结果：成功！";
-                //                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
-                break;
-                
-            default:
-                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode, resp.errStr];
-                //                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode, resp.errStr);
-                break;
-        }
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationWxPay object:nil userInfo:@{NotificationWxPayResultKey:resp}];
     }
 }

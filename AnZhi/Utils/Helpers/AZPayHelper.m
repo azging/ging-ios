@@ -12,13 +12,12 @@
 #import "AZConstant.h"
 #import "AZUtil.h"
 #import "PayRequsestHandler.h"
-#import "AZNetRequester.h"
+#import "AZNetRequester+Order.h"
 
 static NSString * const AZPayHelperWxKey = @"21b7c851bbad3e0edd477718d59b0de7";
 
 @interface AZPayHelper()
 
-@property (strong, nonatomic) AZOrderModel *orderModel;
 @property (strong, nonatomic) AZWxPrepayModel *wxPrepayModel;
 
 @end
@@ -38,17 +37,11 @@ static NSString * const AZPayHelperWxKey = @"21b7c851bbad3e0edd477718d59b0de7";
     return self.orderWrapper.wxPrepayModel;
 }
 
-- (AZOrderModel *)orderModel {
-    return self.orderWrapper.orderModel;
-}
-
 - (void)addObserver {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction:) name:NotificationAliPay object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction:) name:NotificationWxPay object:nil];
 }
 
 - (void)removeObserver {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationAliPay object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationWxPay object:nil];
 }
 
@@ -56,18 +49,25 @@ static NSString * const AZPayHelperWxKey = @"21b7c851bbad3e0edd477718d59b0de7";
     [self removeObserver];
 }
 
-- (void)callWxPay:(AZOrderTicketWrapper *)orderTicketWrapper addrUid:(NSString *)addrUid contact:(NSArray *)contactArr {
-    [AZAlertUtil showHudWithHint:@"创建订单中..."];
-
-}
-
-- (void)callAliPay:(AZOrderTicketWrapper *)orderTicketWrapper addrUid:(NSString *)addrUid contact:(NSArray *)contactArr {
-    [AZAlertUtil showHudWithHint:@"创建订单中..."];
-
-}
-
-- (void)callFreePay:(AZOrderTicketWrapper *)orderTicketWrapper {
-
+- (void)callWxPay:(NSString *)quid
+             auid:(NSString *)auid
+           amount:(CGFloat)amount
+      paymentType:(AZOrderPaymentType)paymentType
+        tradeType:(AZOrderTradeType)tradeType {
+    [AZAlertUtil tipOneMessage:@"正在支付"];
+    [AZNetRequester requestAddOrder:quid auid:auid amount:amount paymentType:paymentType tradeType:tradeType callBack:^(AZOrderWrapper *orderWrapper, NSError *error) {
+        [AZAlertUtil hideHud];
+        if (!error) {
+            self.orderWrapper = orderWrapper;
+            if (self.orderWrapper.orderModel.amount > 0) {
+                [self doWxPay];
+            } else {
+                [AZAlertUtil tipOneMessage:@"订单金额有误，请重试"];
+            }
+        } else {
+            [AZAlertUtil tipOneMessage:error.domain];
+        }
+    }];
 }
 
 - (void)doWxPay {
@@ -118,7 +118,6 @@ static NSString * const AZPayHelperWxKey = @"21b7c851bbad3e0edd477718d59b0de7";
         id resp = [notify.userInfo objectForKey:NotificationWxPayResultKey];
         if([resp isKindOfClass:[PayResp class]]){
             PayResp *payResp = (PayResp *)resp;
-            
             switch (payResp.errCode) {
                 case WXSuccess: {
                     NSLog(@"支付成功－PaySuccess，retcode = %d", payResp.errCode);
@@ -137,92 +136,39 @@ static NSString * const AZPayHelperWxKey = @"21b7c851bbad3e0edd477718d59b0de7";
 
 - (void)clientDidPaySucceed {
     [AZAlertUtil tipOneMessage:@"支付成功!"];
-//    [AZAlertUtil showHudWithHint:@"更新订单"];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(paymentHelper:didPaySucceed:order:error:)]) {
-        [self.delegate paymentHelper:self didPaySucceed:YES order:self.orderModel error:nil];
+        [self.delegate paymentHelper:self didPaySucceed:YES order:self.orderWrapper error:nil];
     }
-
-//    api/v6/sales/order/detail/
-//    //第一次验证订单
-//    [AZNetRequester planOrderQuery:self.partnerOrder.guid callBack:^(AZPartnerOrderModel *partnerOrder, NSError *error) {
-//        if (error) {
-//            //第二次验证订单
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [AZNetRequester planOrderQuery:self.partnerOrder.guid callBack:^(AZPartnerOrderModel *partnerOrder, NSError *error) {
-//                    if (error) {
-//                        //第三次验证订单
-//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                            [AZNetRequester planOrderQuery:self.partnerOrder.guid callBack:^(AZPartnerOrderModel *partnerOrder, NSError *error) {
-//                                if (error) {
-//                                    [YSAlertUtil hideHud];
-//                                    [self serverDidOrderPayWithOrder:self.partnerOrder succeed:NO error:[NSError errorWithDomain:@"正在处理您的订单，请稍后重新进入本邀约详情查看订单状态" code:-1 userInfo:nil]];
-//                                }else{
-//                                    //Succeed
-//                                    [YSAlertUtil hideHud];
-//                                    [self serverDidOrderPayWithOrder:partnerOrder succeed:YES error:nil];
-//                                }
-//                            }];
-//                        });
-//                    }else{
-//                        //Succeed
-//                        [YSAlertUtil hideHud];
-//                        [self serverDidOrderPayWithOrder:partnerOrder succeed:YES error:nil];
-//                    }
-//                }];
-//            });
-//        }else{
-//            //Succeed
-//            [YSAlertUtil hideHud];
-//            [self serverDidOrderPayWithOrder:partnerOrder succeed:YES error:nil];
-//        }
-//    }];
 }
 
-//- (void)doWxPay:(AZWxPrepayModel *)prepayModel {
-//    //============================================================
-//    // V3&V4支付流程实现
-//    // 注意:参数配置请查看服务器端Demo
-//    // 更新时间：2015年11月20日
-//    //============================================================
-//    NSString *urlString = @"http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php?plat=ios";
-//    //解析服务端返回json数据
-//    NSError *error;
-//    //加载一个NSURL对象
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-//    //将请求的url数据放到NSData对象中
-//    NSData *response = [NSURAZonnection sendSynchronousRequest:request returningResponse:nil error:nil];
-//    if (response != nil) {
-//        NSMutableDictionary *dict = NULL;
-//        //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-//        dict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+
+//#pragma mark - WxPay Delegate
+//
+//-(void)onResp:(BaseResp*)resp {
+//    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+//    NSString *strTitle;
+//    
+//    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
+//        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+//    }
+//    if ([resp isKindOfClass:[PayResp class]]) {
+//        // 支付返回结果，实际支付结果需要去微信服务器端查询
+//        strTitle = [NSString stringWithFormat:@"支付结果"];
 //        
-//        NSLog(@"url:%@",urlString);
-//        if(dict != nil){
-//            NSMutableString *retcode = [dict objectForKey:@"retcode"];
-//            if (retcode.intValue == 0){
-//                NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
+//        switch (resp.errCode) {
+//            case WXSuccess:
+//                strMsg = @"支付结果：成功！";
+//                //                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+//                break;
 //                
-//                //调起微信支付
-//                PayReq* req             = [[PayReq alloc] init];
-//                req.partnerId           = [dict objectForKey:@"partnerid"];
-//                req.prepayId            = [dict objectForKey:@"prepayid"];
-//                req.nonceStr            = [dict objectForKey:@"noncestr"];
-//                req.timeStamp           = stamp.intValue;
-//                req.package             = [dict objectForKey:@"package"];
-//                req.sign                = [dict objectForKey:@"sign"];
-//                [WXApi sendReq:req];
-//                //日志输出
-//                NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
-////                return @"";
-//            } else {
-////                return [dict objectForKey:@"retmsg"];
-//            }
-//        } else {
-////            return @"服务器返回错误，未获取到json对象";
+//            default:
+//                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode, resp.errStr];
+//                //                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode, resp.errStr);
+//                break;
 //        }
-//    } else {
-////        return @"服务器返回错误";
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationWxPay object:nil userInfo:@{NotificationWxPayResultKey:resp}];
 //    }
 //}
 
