@@ -25,7 +25,7 @@ typedef enum {
 
 static NSInteger const AZQuestionCellSectionNum = 2;
 
-static NSString * const AZQuestionAnswerPlaceHolder = @"想说点什么...";
+static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 
 
 @interface AZQuestionDetailVC () <UITableViewDelegate, UITableViewDataSource, DXTextMessageToolBarDelegate>
@@ -58,7 +58,7 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"想说点什么...";
 }
 
 - (void)initObserverNotification {
-
+    [self addObserverNotificationNameToRefreshData:AZApiUriQuestionAnswerAdd];
 }
 
 - (void)refreshData {
@@ -89,16 +89,8 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"想说点什么...";
 }
 
 - (void)initInputToolBar {
-    self.inputToolBar = [DXTextMessageToolBar createToolBar:CGRectMake(0, self.view.frame.size.height - [DXTextMessageToolBar defaultHeight], [AZAppUtil getDeviceWidth], [DXTextMessageToolBar defaultHeight]) placeHolder:AZQuestionAnswerPlaceHolder delegate:self];
-//    [self.view addSubview:_inputToolBar];
-}
-
-- (DXTextMessageToolBar *)inputToolBar {
-    if (!_inputToolBar) {
-        _inputToolBar = [DXTextMessageToolBar createToolBar:CGRectMake(0, self.view.frame.size.height - [DXTextMessageToolBar defaultHeight], [AZAppUtil getDeviceWidth], [DXTextMessageToolBar defaultHeight]) placeHolder:AZQuestionAnswerPlaceHolder delegate:self];
-//        [self.view addSubview:_inputToolBar];
-    }
-    return _inputToolBar;
+    _inputToolBar = [DXTextMessageToolBar createToolBar:CGRectMake(0, self.view.frame.size.height - [DXTextMessageToolBar defaultHeight], [AZAppUtil getDeviceWidth], [DXTextMessageToolBar defaultHeight]) placeHolder:AZQuestionAnswerPlaceHolder delegate:self];
+    [self.view addSubview:_inputToolBar];
 }
 
 - (void)dismissAnswerView {
@@ -270,12 +262,13 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"想说点什么...";
     if (AZQuestionDetailCellType_Answer == indexPath.section) {
         if ([self isInputting]) {
             [self.inputToolBar.inputTextView resignFirstResponder];
-            self.inputToolBar.inputTextView.placeHolder = AZQuestionAnswerPlaceHolder;
+//            self.inputToolBar.inputTextView.placeHolder = AZQuestionAnswerPlaceHolder;
         } else {
             if (self.answerWrapperArr.count > indexPath.row) {
-                self.selectedAnswerWrapper = [AZArrayUtil getArrObject:self.answerWrapperArr index:indexPath.row];
-                self.inputToolBar.inputTextView.placeHolder = [NSString stringWithFormat:@"回复:%@:", self.selectedAnswerWrapper.createUserWrapper.userModel.nick];
+
                 [self updateShowAnswerView];
+                //                self.selectedAnswerWrapper = [AZArrayUtil getArrObject:self.answerWrapperArr index:indexPath.row];
+                //                self.inputToolBar.inputTextView.placeHolder = [NSString stringWithFormat:@"回复:%@:", self.selectedAnswerWrapper.createUserWrapper.userModel.nick];
             }
         }
     }
@@ -299,10 +292,6 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"想说点什么...";
     [self dismissAnswerView];
     if ([AZStringUtil isNullString:text]) {
         return;
-    }
-    NSString *replyCuid = @"";
-    if (![self.inputToolBar.inputTextView.placeHolder isEqualToString:AZQuestionAnswerPlaceHolder]) {
-        replyCuid = self.selectedAnswerWrapper.createUserWrapper.userModel.uuid;
     }
     __weak typeof(self) weakSelf = self;
     [AZNetRequester requestQuestionAnswerAdd:self.questionWrapper.questionModel.quid content:text callBack:^(AZAnswerWrapper *answerWrapper, NSError *error) {

@@ -11,19 +11,11 @@
 @implementation AZAnswerModel
 
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"quid":@"Quid",
-             @"title":@"Title",
-             @"desc":@"Description",
-             @"isAnonymous":@"IsAnonymous",
-             @"reward":@"Reward",
-             @"photoUrls":@"PhotoUrls",
-             @"thumbPhotoUrls":@"ThumbPhotoUrls",
-             @"answerNum":@"AnswerNum",
-             @"cityId":@"CityId",
+    return @{@"auid":@"Auid",
+             @"content":@"Content",
+             @"type":@"Type",
              @"status":@"Status",
              @"payStatus":@"PayStatus",
-             @"expireTime":@"ExpireTime",
-             @"expireTimeStr":@"ExpireTimeStr",
              @"createTime":@"CreateTime",
              @"updateTime":@"UpdateTime",
              //             @"":@"",

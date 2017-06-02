@@ -333,7 +333,7 @@
     _inputTextView.scrollEnabled = YES;
     _inputTextView.returnKeyType = UIReturnKeySend;
     _inputTextView.enablesReturnKeyAutomatically = YES; // UITextView内部判断send按钮是否可以用
-    _inputTextView.placeHolder = @"输入新消息";
+//    _inputTextView.placeHolder = @"输入新消息";
     _inputTextView.delegate = self;
     _inputTextView.backgroundColor = [UIColor clearColor];
     _inputTextView.backgroundColor =  [AZColorUtil getColor:0xf5f5f5];
