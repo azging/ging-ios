@@ -14,10 +14,6 @@
 		311275051ECD2EAB00F12996 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311275031ECD2EAB00F12996 /* LaunchScreen.storyboard */; };
 		311275101ECD2EAB00F12996 /* AnZhiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3112750F1ECD2EAB00F12996 /* AnZhiTests.m */; };
 		3112751B1ECD2EAB00F12996 /* AnZhiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3112751A1ECD2EAB00F12996 /* AnZhiUITests.m */; };
-		311275421ECD32B000F12996 /* amrFileCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3112752B1ECD32B000F12996 /* amrFileCodec.m */; };
-		311275431ECD32B000F12996 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 311275341ECD32B000F12996 /* libopencore-amrnb.a */; };
-		311275441ECD32B000F12996 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 311275351ECD32B000F12996 /* libopencore-amrwb.a */; };
-		311275451ECD32B000F12996 /* RecordAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 311275371ECD32B000F12996 /* RecordAudio.m */; };
 		311275461ECD32B000F12996 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3112753A1ECD32B000F12996 /* SZTextView.m */; };
 		311275471ECD32B000F12996 /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3112753D1ECD32B000F12996 /* ApiXml.mm */; };
 		311275481ECD32B000F12996 /* PayRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3112753F1ECD32B000F12996 /* PayRequsestHandler.mm */; };
@@ -203,16 +199,6 @@
 		311275161ECD2EAB00F12996 /* AnZhiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnZhiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3112751A1ECD2EAB00F12996 /* AnZhiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnZhiUITests.m; sourceTree = "<group>"; };
 		3112751C1ECD2EAB00F12996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3112752A1ECD32B000F12996 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
-		3112752B1ECD32B000F12996 /* amrFileCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = amrFileCodec.m; sourceTree = "<group>"; };
-		3112752E1ECD32B000F12996 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
-		3112752F1ECD32B000F12996 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
-		311275311ECD32B000F12996 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
-		311275321ECD32B000F12996 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
-		311275341ECD32B000F12996 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
-		311275351ECD32B000F12996 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
-		311275361ECD32B000F12996 /* RecordAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordAudio.h; sourceTree = "<group>"; };
-		311275371ECD32B000F12996 /* RecordAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAudio.m; sourceTree = "<group>"; };
 		311275391ECD32B000F12996 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
 		3112753A1ECD32B000F12996 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		3112753C1ECD32B000F12996 /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
@@ -472,8 +458,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A3CEF70212660A62CF8C05 /* Pods_AnZhi.framework in Frameworks */,
-				311275441ECD32B000F12996 /* libopencore-amrwb.a in Frameworks */,
-				311275431ECD32B000F12996 /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,60 +556,10 @@
 		311275281ECD32B000F12996 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				311275291ECD32B000F12996 /* ArmAudio */,
 				311275381ECD32B000F12996 /* SZTextView */,
 				3112753B1ECD32B000F12996 /* WechatSdk */,
 			);
 			path = Libs;
-			sourceTree = "<group>";
-		};
-		311275291ECD32B000F12996 /* ArmAudio */ = {
-			isa = PBXGroup;
-			children = (
-				3112752A1ECD32B000F12996 /* amrFileCodec.h */,
-				3112752B1ECD32B000F12996 /* amrFileCodec.m */,
-				3112752C1ECD32B000F12996 /* include */,
-				311275331ECD32B000F12996 /* lib */,
-				311275361ECD32B000F12996 /* RecordAudio.h */,
-				311275371ECD32B000F12996 /* RecordAudio.m */,
-			);
-			path = ArmAudio;
-			sourceTree = "<group>";
-		};
-		3112752C1ECD32B000F12996 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				3112752D1ECD32B000F12996 /* opencore-amrnb */,
-				311275301ECD32B000F12996 /* opencore-amrwb */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		3112752D1ECD32B000F12996 /* opencore-amrnb */ = {
-			isa = PBXGroup;
-			children = (
-				3112752E1ECD32B000F12996 /* interf_dec.h */,
-				3112752F1ECD32B000F12996 /* interf_enc.h */,
-			);
-			path = "opencore-amrnb";
-			sourceTree = "<group>";
-		};
-		311275301ECD32B000F12996 /* opencore-amrwb */ = {
-			isa = PBXGroup;
-			children = (
-				311275311ECD32B000F12996 /* dec_if.h */,
-				311275321ECD32B000F12996 /* if_rom.h */,
-			);
-			path = "opencore-amrwb";
-			sourceTree = "<group>";
-		};
-		311275331ECD32B000F12996 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				311275341ECD32B000F12996 /* libopencore-amrnb.a */,
-				311275351ECD32B000F12996 /* libopencore-amrwb.a */,
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		311275381ECD32B000F12996 /* SZTextView */ = {
@@ -1562,13 +1496,11 @@
 				311276A81ECD406F00F12996 /* AZBaseView.m in Sources */,
 				312498B21EDFA679006A903B /* AZConfigInitWrapper.m in Sources */,
 				311276E51ECD406F00F12996 /* AZColorConstant.m in Sources */,
-				311275451ECD32B000F12996 /* RecordAudio.m in Sources */,
 				311274F71ECD2EAB00F12996 /* main.m in Sources */,
 				311275491ECD32B000F12996 /* WXUtil.mm in Sources */,
 				314BD9671ECFF6DA001C3B87 /* AZImageUploadCell.m in Sources */,
 				311276C41ECD406F00F12996 /* AZRefreshNormalHeader.m in Sources */,
 				311276DD1ECD406F00F12996 /* AZNetRequester.m in Sources */,
-				311275421ECD32B000F12996 /* amrFileCodec.m in Sources */,
 				3142BFBC1ED425CF00DA53C3 /* AZQuestionWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1726,13 +1658,40 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 44PHS27MTL;
+				ENABLE_BITCODE = NO;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DKImagePickerController\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/HCSStarRatingView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/HappyDNS\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManager\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/KLCPopup\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MyLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Qiniu\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/THProgressView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/YYModel\"",
+					"\"${PODS_ROOT}/AMap2DMap\"",
+					"\"${PODS_ROOT}/AMapFoundation\"",
+					"\"${PODS_ROOT}/AMapLocation\"",
+					"\"${PODS_ROOT}/UMengAnalytics/umsdk_IOS_analyics_idfa_v4.2.4\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/DingDing\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Facebook\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Kakao\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Linkedin\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK\"",
+					"\"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Twitter\"",
+				);
 				INFOPLIST_FILE = AnZhi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AnZhi/Libs/ArmAudio/lib",
-					"$(PROJECT_DIR)/AnZhi/Libs/XMPP/XMPPFramework/Vendor/libidn",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.azging.AnZhi.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1746,13 +1705,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 44PHS27MTL;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AnZhi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AnZhi/Libs/ArmAudio/lib",
-					"$(PROJECT_DIR)/AnZhi/Libs/XMPP/XMPPFramework/Vendor/libidn",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.azging.AnZhi.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
