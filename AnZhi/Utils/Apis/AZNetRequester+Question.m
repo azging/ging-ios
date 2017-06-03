@@ -2,7 +2,7 @@
 //  AZNetRequester+Question.m
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/5/20.
+//  Created by LHJ on 2017/5/20.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 @implementation AZNetRequester (Question)
 
 // 发布提问
-+ (void)requestQuestionPublish:(NSString *)title desc:(NSString *)desc photoUrlArr:(NSArray *)photoUrlArr reward:(double)reward isAnonymous:(BOOL)isAnonymous callBack:(void(^)(AZQuestionWrapper *questionWrapper, NSError *error))callBack {
++ (void)requestQuestionPublish:(NSString *)title desc:(NSString *)desc photoUrlArr:(NSArray *)photoUrlArr reward:(CGFloat)reward isAnonymous:(BOOL)isAnonymous callBack:(void(^)(AZQuestionWrapper *questionWrapper, NSError *error))callBack {
     title = [AZStringUtil getNotNullStr:title];
     desc = [AZStringUtil getNotNullStr:desc];
     NSString *photoUrls = [AZStringUtil getJsonStrFromArr:photoUrlArr];
@@ -29,8 +29,7 @@
     [[self createInstance] doPost:AZApiUriQuestionPublish params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
             if (dataDic) {
-                NSDictionary *questionDic = [dataDic dicOfObjectForKey:@"QuestionWrapper"];
-                AZQuestionWrapper *question = [AZQuestionWrapper modelWithDict:questionDic];
+                AZQuestionWrapper *question = [AZQuestionWrapper modelWithDict:dataDic];
                 callBack(question, error);
             } else {
                 callBack(nil, error);
@@ -80,7 +79,7 @@
     
     [[self createInstance] doPost:uriStr params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 NSArray *questionJsonArr = [dataDic objectForKey:@"QuestionWrapperList"];
                 NSString *orderStr = [dataDic objectForKey:@"OrderStr"];
                 
@@ -114,7 +113,7 @@
     
     [[self createInstance] doPost:AZApiUriQuestionAnswerList params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 NSArray *answerJsonArr = [dataDic objectForKey:@"AnswerWrapperList"];
                 NSString *orderStr = [dataDic objectForKey:@"OrderStr"];
                 
@@ -140,8 +139,8 @@
     quid = [AZStringUtil getNotNullStr:quid];
     content = [AZStringUtil getNotNullStr:content];
     NSDictionary *params = @{@"Quid": quid,
-                             @"Content": quid,
-                             @"Type": [NSNumber numberWithInteger:0],
+                             @"Content": content,
+                             @"Type": [NSNumber numberWithInteger:0],  // 0为文字回答
                              };
 
     [[self createInstance] doPost:AZApiUriQuestionAnswerAdd params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
@@ -156,6 +155,22 @@
         }
     }];
 }
+
+// 挑选满意回答 
++ (void)requestQuestionAnswerAdopt:(NSString *)quid auid:(NSString *)auid callBack:(void(^)(NSError *error))callBack {
+    quid = [AZStringUtil getNotNullStr:quid];
+    auid = [AZStringUtil getNotNullStr:auid];
+    NSDictionary *params = @{@"Quid": quid,
+                             @"Auid": auid,
+                             };
+    
+    [[self createInstance] doPost:AZApiUriQuestionAnswerAdopt params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            callBack(error);
+        }
+    }];
+}
+
 
 
 @end

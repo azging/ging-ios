@@ -11,7 +11,7 @@
 
 @implementation AZAuthCode
 
-+ (NSDictionary *)modeAZustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper {
     return @{@"authCode":@"AuthCode",
              @"expireTime":@"ExpireTime",
              };

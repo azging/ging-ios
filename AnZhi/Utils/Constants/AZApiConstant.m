@@ -50,14 +50,16 @@ NSString * const AZApiUriQuestionListHot = @"v1/question/list/hot/";
 NSString * const AZApiUriQuestionAnswerList  = @"v1/question/answer/list/";
 NSString * const AZApiUriQuestionAnswerAdd = @"v1/question/answer/add/";
 
+NSString * const AZApiUriQuestionAnswerAdopt = @"v1/question/answer/adopt/";
+
 
 #pragma mark - Order
 
 NSString * const AZApiUriOrderAdd = @"v1/wallet/order/add/";
 NSString * const AZApiUriOrderDetail = @"v1/wallet/order/detail/";
 
-
-
+NSString * const AZApiUriWalletBalance = @"v1/wallet/balance/";
+NSString * const AZApiUriWalletBalanceToCash = @"";
 
 
 

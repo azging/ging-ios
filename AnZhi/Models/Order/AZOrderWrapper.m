@@ -11,7 +11,7 @@
 
 @implementation AZOrderWrapper
 
-+ (NSDictionary *)modeAZustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper {
     return @{@"orderModel":@"Order",
              @"wxPrepayModel":@"WxPrepay",
              @"createUserModel":@"CreateUser",

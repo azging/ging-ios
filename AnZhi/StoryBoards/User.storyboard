@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,7 @@
         <scene sceneID="yFK-bv-3hX">
             <objects>
                 <navigationController id="Zqd-VN-VXD" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aaD-Xd-Tpe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaD-Xd-Tpe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1349,12 +1350,71 @@
                     <view key="view" contentMode="scaleToFill" id="OSA-1W-qGp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKD-Tc-LZl" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBt-ek-lyA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0k-eU-bMX">
+                                                <rect key="frame" x="143.5" y="50" width="89.5" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="cq4-vM-ylj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                                <color key="textColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="126" id="FwN-Rz-3JM"/>
+                                            <constraint firstItem="A0k-eU-bMX" firstAttribute="centerX" secondItem="mBt-ek-lyA" secondAttribute="centerX" id="hXe-Kn-NXL"/>
+                                            <constraint firstItem="A0k-eU-bMX" firstAttribute="top" secondItem="mBt-ek-lyA" secondAttribute="top" constant="50" id="rZX-Sr-aob"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd1-sx-HrI">
+                                        <rect key="frame" x="5" y="554" width="365" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.51764705879999995" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="S1n-j1-lnW"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="提现">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toCashButtonAction:" destination="DnE-0c-PWM" eventType="touchUpInside" id="YHG-LQ-mlD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mBt-ek-lyA" firstAttribute="leading" secondItem="CKD-Tc-LZl" secondAttribute="leading" id="Kp6-EK-CKa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wd1-sx-HrI" secondAttribute="bottom" constant="5" id="O1e-cL-LCE"/>
+                                    <constraint firstAttribute="trailing" secondItem="mBt-ek-lyA" secondAttribute="trailing" id="am1-NO-c6U"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wd1-sx-HrI" secondAttribute="trailing" constant="5" id="juf-TU-Psr"/>
+                                    <constraint firstItem="mBt-ek-lyA" firstAttribute="top" secondItem="CKD-Tc-LZl" secondAttribute="top" id="n6l-hi-NKN"/>
+                                    <constraint firstItem="Wd1-sx-HrI" firstAttribute="leading" secondItem="CKD-Tc-LZl" secondAttribute="leading" constant="5" id="oCr-j9-3F3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CKD-Tc-LZl" firstAttribute="leading" secondItem="OSA-1W-qGp" secondAttribute="leading" id="8LO-ZA-YTR"/>
+                            <constraint firstItem="Z7y-cU-MOh" firstAttribute="top" secondItem="CKD-Tc-LZl" secondAttribute="bottom" id="cRF-sd-uZj"/>
+                            <constraint firstItem="CKD-Tc-LZl" firstAttribute="top" secondItem="ZUb-lg-Wum" secondAttribute="bottom" id="xhS-mK-IPu"/>
+                            <constraint firstAttribute="trailing" secondItem="CKD-Tc-LZl" secondAttribute="trailing" id="zIJ-u3-4Ni"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="walletLabel" destination="A0k-eU-bMX" id="MeZ-fO-Rn7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9S-fV-1zj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3479" y="-916"/>
+            <point key="canvasLocation" x="3477.5999999999999" y="-916.1919040479761"/>
         </scene>
     </scenes>
     <resources>

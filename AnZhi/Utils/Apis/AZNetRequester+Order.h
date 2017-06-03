@@ -2,7 +2,7 @@
 //  AZNetRequester+Order.h
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/6/2.
+//  Created by LHJ on 2017/6/2.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
@@ -24,5 +24,11 @@
 
 // 订单详情
 + (void)requestOrderDetail:(NSString *)ouid callBack:(void (^)(AZOrderWrapper *, NSError *error))callBack;
+
+// 获取用户钱包余额
++ (void)requestWalletBalance:(void(^)(CGFloat balance, NSError *error))callBack;
+
+// 提现
++ (void)requestWalletBalanceToCash:(CGFloat)amount callBack:(void(^)(NSError *error))callBack;
 
 @end

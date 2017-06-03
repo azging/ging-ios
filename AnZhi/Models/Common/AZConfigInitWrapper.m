@@ -10,7 +10,7 @@
 
 @implementation AZConfigInitWrapper
 
-+ (NSDictionary *)modeAZustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper {
     return @{@"isCIDExpired":@"IsCIDExpired",
              @"userModel":@"User",
              @"userNotifyModel":@"UserNotify",

@@ -9,7 +9,7 @@
 
 @implementation AZOrderModel
 
-+ (NSDictionary *)modeAZustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper {
     return @{@"ouid":@"Ouid",
              @"amount":@"Amount",
              @"paymentType":@"PaymentType",

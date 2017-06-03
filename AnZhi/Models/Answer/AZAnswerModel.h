@@ -8,12 +8,18 @@
 
 #import "AZBaseModel.h"
 
+typedef enum : NSInteger {
+    AZAnswerStatus_Default      = 0,    // 0 普通回答
+    AZAnswerStatus_Adopt        = 1,    // 1 选中回答
+    AZAnswerStatus_AdoptPay     = 2,    // 2 选中的回答，且已支付
+} AZAnswerStatus;
+
 @interface AZAnswerModel : AZBaseModel
 
 @property (copy, nonatomic) NSString *auid;
-@property (assign, nonatomic) NSString *content;
-@property (assign, nonatomic) NSInteger type;
-@property (assign, nonatomic) NSInteger status;
+@property (copy, nonatomic) NSString *content;
+@property (assign, nonatomic) NSInteger type;       // 0 为文字回答
+@property (assign, nonatomic) AZAnswerStatus status; 
 @property (assign, nonatomic) NSInteger payStatus;
 @property (copy, nonatomic) NSString *createTime;
 @property (copy, nonatomic) NSString *updateTime;

@@ -52,10 +52,16 @@ CF_EXPORT NSString * const AZApiUriQuestionListHot;
 CF_EXPORT NSString * const AZApiUriQuestionAnswerList;
 CF_EXPORT NSString * const AZApiUriQuestionAnswerAdd;
 
+CF_EXPORT NSString * const AZApiUriQuestionAnswerAdopt;
+
 
 #pragma mark - Order 
 
 CF_EXPORT NSString * const AZApiUriOrderAdd;
 CF_EXPORT NSString * const AZApiUriOrderDetail;
+
+CF_EXPORT NSString * const AZApiUriWalletBalance;
+CF_EXPORT NSString * const AZApiUriWalletBalanceToCash;
+
 
 #endif /* AZApiConstant_h */

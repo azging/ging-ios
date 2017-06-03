@@ -17,6 +17,7 @@
 #import "AZAnswerWrapper.h"
 #import "AZDataManager.h"
 #import "AZPopViewHelper.h"
+#import "AZCommonHeaderView.h"
 
 typedef enum {
     AZQuestionDetailCellType_Info           = 0,
@@ -28,7 +29,7 @@ static NSInteger const AZQuestionCellSectionNum = 2;
 static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 
 
-@interface AZQuestionDetailVC () <UITableViewDelegate, UITableViewDataSource, DXTextMessageToolBarDelegate>
+@interface AZQuestionDetailVC () <UITableViewDelegate, UITableViewDataSource, DXTextMessageToolBarDelegate, AZQuestionAnswerCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -39,6 +40,8 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (strong, nonatomic) AZAnswerWrapper *selectedAnswerWrapper;
 @property (weak, nonatomic) IBOutlet UIButton *answerBtn;
+
+@property (assign, nonatomic) BOOL isAdopting;
 
 @end
 
@@ -65,6 +68,10 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
     if ([NotificationRefreshReasonViewWillAppear isEqualToString:self.refreshDataReason]) {
         [self updateShow];
     } else {
+        if ([AZApiUriQuestionAnswerAdopt isEqualToString:self.refreshDataReason]) {
+            [self requestQuestionDetail];
+            [self refreshAnswerList];
+        }
         if ([AZApiUriQuestionAnswerAdd isEqualToString:self.refreshDataReason]) {
             [self refreshAnswerList];
         } else {
@@ -81,8 +88,7 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AZQuestionCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AZQuestionCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AZQuestionAnswerCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AZQuestionAnswerCell class])];
    
-//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AZCommonHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([AZCommonHeaderView class])];
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AZCommonHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([AZCommonHeaderView class])];
     
     self.tableView.mj_footer = [AZRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
     self.tableView.mj_footer.hidden = YES;
@@ -111,6 +117,31 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 
 - (void)updateShow {
     [self.tableView reloadData];
+    [self updateShowButtom];
+}
+
+- (void)updateShowButtom {
+    NSString *title = @"立即回答";
+    if ([self.questionWrapper.createUserWrapper.userModel isMySelf]) {
+        switch (self.questionWrapper.questionModel.status) {
+            case AZQuestionStatus_ANSWERING:
+                title = @"挑选满意回答";
+                break;
+            case AZQuestionStatus_EXPIRED_NO_ANSWER:
+            case AZQuestionStatus_EXPIRED_NO_ANSWER_REFUNDED:
+            case AZQuestionStatus_EXPIRED_UNADOPTED:
+            case AZQuestionStatus_EXPIRED_UNADOPTED_PAID_FIRST:
+                title = @"已过期";
+                break;
+            case AZQuestionStatus_ADOPTED:
+            case AZQuestionStatus_ADOPTED_PAID_BEST:
+                title = @"已结束";
+                break;
+            default:
+                break;
+        }
+    }
+    [self.answerBtn setTitle:title forState:UIControlStateNormal];
 }
 
 - (void)updateToScrollToAnswer {
@@ -211,6 +242,9 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
         case AZQuestionDetailCellType_Answer: {
             AZQuestionAnswerCell *answerCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AZQuestionAnswerCell class]) forIndexPath:indexPath];
             AZAnswerWrapper *answerWrapper = [AZArrayUtil getArrObject:self.answerWrapperArr index:indexPath.row];
+            answerCell.delegate = self;
+            answerCell.indexPath = indexPath;
+            answerCell.cellType = self.isAdopting;
             [answerCell updateShowAnswerCell:answerWrapper];
             cell = answerCell;
         }
@@ -237,8 +271,8 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == AZQuestionDetailCellType_Answer) {
         if (self.answerWrapperArr.count > 0) {
-            UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
-            header.textLabel.text = @"回答";
+            AZCommonHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([AZCommonHeaderView class])];
+            [header updateShowCommonHeader:@"回答"];
             return header;
         }
     }
@@ -247,7 +281,7 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == AZQuestionDetailCellType_Info) {
-        return 12;
+        return 5.0f;
     }
     return 0;
 }
@@ -258,21 +292,46 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (AZQuestionDetailCellType_Answer == indexPath.section) {
-        if ([self isInputting]) {
-            [self.inputToolBar.inputTextView resignFirstResponder];
-//            self.inputToolBar.inputTextView.placeHolder = AZQuestionAnswerPlaceHolder;
-        } else {
-            if (self.answerWrapperArr.count > indexPath.row) {
-
-                [self updateShowAnswerView];
-                //                self.selectedAnswerWrapper = [AZArrayUtil getArrObject:self.answerWrapperArr index:indexPath.row];
-                //                self.inputToolBar.inputTextView.placeHolder = [NSString stringWithFormat:@"回复:%@:", self.selectedAnswerWrapper.createUserWrapper.userModel.nick];
-            }
-        }
-    }
+//    
+//    if (AZQuestionDetailCellType_Answer == indexPath.section) {
+//        if ([self isInputting]) {
+//            [self.inputToolBar.inputTextView resignFirstResponder];
+////            self.inputToolBar.inputTextView.placeHolder = AZQuestionAnswerPlaceHolder;
+//        } else {
+//            if (self.answerWrapperArr.count > indexPath.row) {
+//
+//                [self updateShowAnswerView];
+//                //                self.selectedAnswerWrapper = [AZArrayUtil getArrObject:self.answerWrapperArr index:indexPath.row];
+//                //                self.inputToolBar.inputTextView.placeHolder = [NSString stringWithFormat:@"回复:%@:", self.selectedAnswerWrapper.createUserWrapper.userModel.nick];
+//            }
+//        }
+//    }
 }
+
+
+#pragma mark - AnswerCell Delegate
+
+- (void)answerCellShowMoreContent:(AZAnswerWrapper *)answerWrapper indexPath:(NSIndexPath *)indexPath {
+    self.answerWrapperArr = [AZArrayUtil updateObject:self.answerWrapperArr atIndex:indexPath.row obj:answerWrapper];
+    [self updateShow];
+}
+
+- (void)answerCellChoiceAnswer:(AZAnswerWrapper *)answerWrapper indexPath:(NSIndexPath *)indexPath {
+    [AZAlertUtil showActionSheet:@[@"选为最佳答案"] callBack:^(NSInteger selectIndex) {
+        if (1 == selectIndex) {
+            [AZNetRequester requestQuestionAnswerAdopt:self.questionWrapper.questionModel.quid auid:answerWrapper.answerModel.auid callBack:^(NSError *error) {
+                if (!error) {
+                    self.isAdopting = NO;
+                    [self updateShow];
+                } else {
+                    [AZAlertUtil tipOneMessage:error.domain];
+                }
+            }];
+        }
+    }];
+}
+
+
 
 #pragma mark - XHMessageTextView Delegate
 
@@ -314,11 +373,34 @@ static NSString * const AZQuestionAnswerPlaceHolder = @"留下您的答案...";
         [AZSwitcherUtil presentToShowRegisterVC];
         return;
     }
-    [self updateShowAnswerView];
-    [self updateToScrollToAnswer];
+    
+    if ([self.questionWrapper.createUserWrapper.userModel isMySelf]) {
+        switch (self.questionWrapper.questionModel.status) {
+            case AZQuestionStatus_ANSWERING:
+                [self adpotAnswer];
+                break;
+            case AZQuestionStatus_EXPIRED_NO_ANSWER:
+            case AZQuestionStatus_EXPIRED_NO_ANSWER_REFUNDED:
+            case AZQuestionStatus_EXPIRED_UNADOPTED:
+            case AZQuestionStatus_EXPIRED_UNADOPTED_PAID_FIRST:
+                break;
+            case AZQuestionStatus_ADOPTED:
+            case AZQuestionStatus_ADOPTED_PAID_BEST:
+                break;
+            default:
+                break;
+        }
+    } else {
+        [self updateShowAnswerView];
+        [self updateToScrollToAnswer];
+    }
+    
 }
 
-
+- (void)adpotAnswer {
+    self.isAdopting = YES;
+    [self updateShow];
+}
 
 - (IBAction)shareAction:(id)sender {
     [[AZPopViewHelper sharedInstance] popSocailShareView:self.questionWrapper];

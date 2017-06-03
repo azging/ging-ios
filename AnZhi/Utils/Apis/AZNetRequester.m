@@ -17,7 +17,7 @@
     NSArray *paramsArr = @[];
     
     [[self createInstance] doGet:AZApiUriAppConfigInit params:paramsArr requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
-        if (!error) {
+        if (dataDic) {
             AZConfigInitWrapper *wrapper = [AZConfigInitWrapper modelWithDict:dataDic];
             if (wrapper.isCIDExpired) {
                 [AZDataManager sharedInstance].userModel = nil;
@@ -53,7 +53,7 @@
                                @"DeviceToken":appDeviceToken,
                                };
     [[self createInstance] doPost:AZApiUriAppConfigSet params:paramDic requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
-        if (!error) {
+        if (dataDic) {
             if (![AZDataManager sharedInstance].isAppConfigSetted) {
 //                AZCityModel *cityModel = [AZCityModel modelWithDict:dataDic];
 //                [AZDataManager sharedInstance].currentCityModel = cityModel;
@@ -71,7 +71,7 @@
     NSDictionary *paramDic = @{@"Type" : fileType};
     [[self createInstance] doPost:AZApiUriGetQINIUUploadToken params:paramDic requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (dataDic && !error) {
+            if (dataDic) {
                 NSString *uploadToken = [dataDic objectForKey:@"UpToken"];
                 NSString *picKey = [dataDic objectForKey:@"PhotoKey"];
                 callBack(uploadToken, picKey, error);

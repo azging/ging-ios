@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) AZAnswerModel *answerModel;
 @property (strong, nonatomic) AZUserWrapper *createUserWrapper;
+
+@property (assign, nonatomic) BOOL showMoreContent;  // 回答cell 是否展开content，在此记录
 @end

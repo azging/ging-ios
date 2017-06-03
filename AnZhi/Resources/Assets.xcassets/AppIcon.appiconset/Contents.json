@@ -52,54 +52,63 @@
       "size" : "20x20",
       "idiom" : "ipad",
       "filename" : "AppIcon20@2x.png",
+      "unassigned" : true,
       "scale" : "1x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
       "filename" : "AppIcon40@2x-1.png",
+      "unassigned" : true,
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
       "filename" : "AppIcon29@2x.png",
+      "unassigned" : true,
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
       "filename" : "AppIcon58@2x-1.png",
+      "unassigned" : true,
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
       "filename" : "AppIcon40@2x-2.png",
+      "unassigned" : true,
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
       "filename" : "AppIcon80@2x-1.png",
+      "unassigned" : true,
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
       "filename" : "AppIcon76@2x.png",
+      "unassigned" : true,
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
       "filename" : "AppIcon152@2x.png",
+      "unassigned" : true,
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
       "filename" : "AppIcon167@2x.png",
+      "unassigned" : true,
       "scale" : "2x"
     }
   ],

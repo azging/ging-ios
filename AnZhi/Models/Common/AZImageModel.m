@@ -10,7 +10,7 @@
 
 @implementation AZImageModel
 
-+ (NSDictionary *)modeAZustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper {
     return @{@"imageUrl":@"ImageUrl",
              @"imageUrlThumb":@"ImageUrlThumb",
              @"imageUrlMd5":@"ImageUrlMd5",

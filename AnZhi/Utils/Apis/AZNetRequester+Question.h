@@ -17,7 +17,7 @@
 
 
 // 发布提问
-+ (void)requestQuestionPublish:(NSString *)title desc:(NSString *)desc photoUrlArr:(NSArray *)photoUrlArr reward:(double)reward isAnonymous:(BOOL)isAnonymous callBack:(void(^)(AZQuestionWrapper *questionWrapper, NSError *error))callBack;
++ (void)requestQuestionPublish:(NSString *)title desc:(NSString *)desc photoUrlArr:(NSArray *)photoUrlArr reward:(CGFloat)reward isAnonymous:(BOOL)isAnonymous callBack:(void(^)(AZQuestionWrapper *questionWrapper, NSError *error))callBack;
 
 // 提问详情
 + (void)requestQuestionDetail:(NSString *)quid callBack:(void(^)(AZQuestionWrapper *questionWrapper, NSError *error))callBack;
@@ -32,5 +32,9 @@
 
 // 添加回答
 + (void)requestQuestionAnswerAdd:(NSString *)quid content:(NSString *)content callBack:(void(^)(AZAnswerWrapper *answerWrapper, NSError *error))callBack;
+
+// 挑选满意回答
++ (void)requestQuestionAnswerAdopt:(NSString *)quid auid:(NSString *)auid callBack:(void(^)(NSError *error))callBack;
+
 
 @end

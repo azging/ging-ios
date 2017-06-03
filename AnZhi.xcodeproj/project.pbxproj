@@ -167,6 +167,9 @@
 		314BD96E1ED03C84001C3B87 /* AZNetRequester+Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD96D1ED03C84001C3B87 /* AZNetRequester+Question.m */; };
 		314BD9721ED27AD6001C3B87 /* AZQuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9711ED27AD6001C3B87 /* AZQuestionModel.m */; };
 		314BD9751ED27E0C001C3B87 /* AZUserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 314BD9741ED27E0C001C3B87 /* AZUserWrapper.m */; };
+		3166C37D1EE25C3E000B1FBC /* LanTing.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3166C37C1EE25C3E000B1FBC /* LanTing.ttf */; };
+		3166C3801EE2959E000B1FBC /* AZCommonHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3166C37F1EE2959E000B1FBC /* AZCommonHeaderView.m */; };
+		3166C3821EE295AC000B1FBC /* AZCommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3166C3811EE295AC000B1FBC /* AZCommonHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,6 +457,10 @@
 		314BD9711ED27AD6001C3B87 /* AZQuestionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZQuestionModel.m; sourceTree = "<group>"; };
 		314BD9731ED27E0C001C3B87 /* AZUserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZUserWrapper.h; sourceTree = "<group>"; };
 		314BD9741ED27E0C001C3B87 /* AZUserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZUserWrapper.m; sourceTree = "<group>"; };
+		3166C37C1EE25C3E000B1FBC /* LanTing.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LanTing.ttf; sourceTree = "<group>"; };
+		3166C37E1EE2959E000B1FBC /* AZCommonHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZCommonHeaderView.h; sourceTree = "<group>"; };
+		3166C37F1EE2959E000B1FBC /* AZCommonHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZCommonHeaderView.m; sourceTree = "<group>"; };
+		3166C3811EE295AC000B1FBC /* AZCommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZCommonHeaderView.xib; sourceTree = "<group>"; };
 		66C8301DECB250C4850B05C8 /* Pods-AnZhi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnZhi.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnZhi/Pods-AnZhi.release.xcconfig"; sourceTree = "<group>"; };
 		7A5A8E65ABD59A3E8D899D05 /* Pods_AnZhi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnZhi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC244C3C95DAF25120914CBA /* Pods-AnZhi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnZhi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnZhi/Pods-AnZhi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -522,11 +529,11 @@
 			isa = PBXGroup;
 			children = (
 				311277091ECD45A100F12996 /* Controllers */,
+				311275E91ECD406E00F12996 /* Views */,
 				3112772C1ECD45A100F12996 /* Models */,
 				3112754D1ECD338500F12996 /* StoryBoards */,
-				311275281ECD32B000F12996 /* Libs */,
-				311275E91ECD406E00F12996 /* Views */,
 				3112762E1ECD406E00F12996 /* Utils */,
+				311275281ECD32B000F12996 /* Libs */,
 				3112754C1ECD338500F12996 /* Resources */,
 				311274F51ECD2EAB00F12996 /* Supporting Files */,
 				311274F81ECD2EAB00F12996 /* AppDelegate.h */,
@@ -646,6 +653,7 @@
 		3112754C1ECD338500F12996 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3166C37C1EE25C3E000B1FBC /* LanTing.ttf */,
 				311275501ECD33BC00F12996 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -697,6 +705,9 @@
 				3142BFB11ED40D7C00DA53C3 /* AZImageCollectionCell.h */,
 				3142BFB21ED40D7C00DA53C3 /* AZImageCollectionCell.m */,
 				3142BFB31ED40D7C00DA53C3 /* AZImageCollectionCell.xib */,
+				3166C37E1EE2959E000B1FBC /* AZCommonHeaderView.h */,
+				3166C37F1EE2959E000B1FBC /* AZCommonHeaderView.m */,
+				3166C3811EE295AC000B1FBC /* AZCommonHeaderView.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1343,6 +1354,7 @@
 				311421521EE16DDE00F3B525 /* chatBar_colorMore_video@2x.png in Resources */,
 				3114213D1EE16DDE00F3B525 /* chatBar_keyboard@2x.png in Resources */,
 				314BD9681ECFF6DA001C3B87 /* AZImageUploadCell.xib in Resources */,
+				3166C37D1EE25C3E000B1FBC /* LanTing.ttf in Resources */,
 				3114215F1EE16DDE00F3B525 /* chatBar_more_photoSelected@2x.png in Resources */,
 				311421381EE16DDE00F3B525 /* chatBar_face.png in Resources */,
 				311421551EE16DDE00F3B525 /* chatBar_more_camera@2x.png in Resources */,
@@ -1358,6 +1370,7 @@
 				3114214D1EE16DDE00F3B525 /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
 				3114215A1EE16DDE00F3B525 /* chatBar_more_locationSelected.png in Resources */,
 				3114215B1EE16DDE00F3B525 /* chatBar_more_locationSelected@2x.png in Resources */,
+				3166C3821EE295AC000B1FBC /* AZCommonHeaderView.xib in Resources */,
 				311421561EE16DDE00F3B525 /* chatBar_more_cameraSelected.png in Resources */,
 				311421471EE16DDE00F3B525 /* chatBar_recordBg@2x.png in Resources */,
 				314BD9591ECE971A001C3B87 /* User.storyboard in Resources */,
@@ -1542,6 +1555,7 @@
 				3144EBD91ECDB40600E2F062 /* AZUserVC.m in Sources */,
 				311277081ECD406F00F12996 /* AZViewUtil.m in Sources */,
 				311277571ECD45A100F12996 /* AZBaseModel.m in Sources */,
+				3166C3801EE2959E000B1FBC /* AZCommonHeaderView.m in Sources */,
 				311275481ECD32B000F12996 /* PayRequsestHandler.mm in Sources */,
 				311420E01EE155AC00F3B525 /* AZWxPrepayModel.m in Sources */,
 				3116E94D1EDE677500F55B74 /* AZUserQuestionVC.m in Sources */,
@@ -1720,7 +1734,7 @@
 					"$(PROJECT_DIR)/AnZhi/Libs/ArmAudio/lib",
 					"$(PROJECT_DIR)/AnZhi/Libs/XMPP/XMPPFramework/Vendor/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.azging.AnZhi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.azging.AnZhi.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1740,7 +1754,7 @@
 					"$(PROJECT_DIR)/AnZhi/Libs/ArmAudio/lib",
 					"$(PROJECT_DIR)/AnZhi/Libs/XMPP/XMPPFramework/Vendor/libidn",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.azging.AnZhi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.azging.AnZhi.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -10,7 +10,7 @@
 
 @implementation AZWxPrepayModel
 
-+ (NSDictionary *)modeAZustomPropertyMapper {
++ (NSDictionary *)modelCustomPropertyMapper {
     return @{@"appId":@"appid",
              @"mchId":@"mch_id",
              @"nonceStr":@"nonce_str",

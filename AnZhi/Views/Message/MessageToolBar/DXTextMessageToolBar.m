@@ -356,7 +356,7 @@
     _inputTextView.scrollEnabled = YES;
     _inputTextView.returnKeyType = UIReturnKeySend;
     _inputTextView.enablesReturnKeyAutomatically = YES; // UITextView内部判断send按钮是否可以用
-//    _inputTextView.placeHolder = @"想说点什么...";
+//    _inputTextView.placeHolder = @"想说点什么...";   // 不能打开，打开之后，会崩溃，原因不明
     _inputTextView.delegate = self;
     _inputTextView.backgroundColor = [AZColorUtil getColor:0xf2f2f2];
 //    _inputTextView.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;

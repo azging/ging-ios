@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="111.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzB-9n-mtH">
@@ -72,7 +73,10 @@
                                             <constraint firstAttribute="height" constant="25" id="JMg-B3-IKH"/>
                                             <constraint firstAttribute="width" constant="25" id="tYF-7h-4jg"/>
                                         </constraints>
-                                        <state key="normal" image="QuestionChoiceAnswerIcon"/>
+                                        <state key="normal" image="CommonMoreIcon"/>
+                                        <connections>
+                                            <action selector="choiceButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a6l-BT-Dmf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -116,13 +120,21 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RR2-45-5fs">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="20"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="8fd-zQ-Efr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" title="收起">
-                                            <color key="titleColor" red="0.95294117647058818" green="0.60784313725490191" blue="0.13333333333333333" alpha="0.79984482020547931" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="展开">
+                                            <color key="titleColor" red="0.95294117649999999" green="0.60784313729999995" blue="0.1333333333" alpha="0.79984482020000003" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <state key="selected" title="收起">
+                                            <color key="titleColor" red="0.95294117649999999" green="0.60784313729999995" blue="0.1333333333" alpha="0.79984482020000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="moreButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vkr-5U-RJs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -137,7 +149,7 @@
                                 <rect key="frame" x="15" y="87" width="345" height="19.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBn-EG-GP6">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="3" width="335" height="11.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -148,7 +160,7 @@
                                     <constraint firstAttribute="trailing" secondItem="hBn-EG-GP6" secondAttribute="trailing" constant="10" id="Aot-Yg-pjp"/>
                                     <constraint firstAttribute="bottom" secondItem="hBn-EG-GP6" secondAttribute="bottom" constant="5" id="hSA-XH-2JT"/>
                                     <constraint firstItem="hBn-EG-GP6" firstAttribute="leading" secondItem="TXO-GS-0Oa" secondAttribute="leading" id="iau-4n-8XT"/>
-                                    <constraint firstItem="hBn-EG-GP6" firstAttribute="top" secondItem="TXO-GS-0Oa" secondAttribute="top" id="w3d-4W-HyM"/>
+                                    <constraint firstItem="hBn-EG-GP6" firstAttribute="top" secondItem="TXO-GS-0Oa" secondAttribute="top" constant="3" id="w3d-4W-HyM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="te3-Lu-Npc" userLabel="Split Line">
@@ -203,7 +215,7 @@
     </objects>
     <resources>
         <image name="CommonAvatarIcon" width="80" height="80"/>
-        <image name="QuestionChoiceAnswerIcon" width="23" height="23"/>
+        <image name="CommonMoreIcon" width="24" height="5"/>
         <image name="QuestionWinIcon" width="18" height="16"/>
         <image name="UserGenderMale" width="10" height="10"/>
     </resources>

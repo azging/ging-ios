@@ -115,7 +115,7 @@
                                };
     [[self createInstance] doPost:AZApiUriUserInfoUpdate params:paramDic requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 AZUserModel *userModel = [AZUserModel modelWithDict:[dataDic dicOfObjectForKey:@"User"]];
                 [AZDataManager sharedInstance].userModel = userModel;
                 [[AZDataManager sharedInstance] saveData];
@@ -140,7 +140,7 @@
 
     [[self createInstance] doPost:AZApiUriUserQuestionList params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 NSArray *questionJsonArr = [dataDic objectForKey:@"QuestionWrapperList"];
                 NSString *orderStr = [dataDic objectForKey:@"OrderStr"];
                 
@@ -172,7 +172,7 @@
     
     [[self createInstance] doPost:AZApiUriUserAnswerList params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 NSArray *questionJsonArr = [dataDic objectForKey:@"QuestionWrapperList"];
                 NSString *orderStr = [dataDic objectForKey:@"OrderStr"];
                 

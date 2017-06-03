@@ -2,7 +2,7 @@
 //  AZNetRequester+Order.m
 //  AnZhi
 //
-//  Created by Mr.Positive on 2017/6/2.
+//  Created by LHJ on 2017/6/2.
 //  Copyright © 2017年 AnZhi. All rights reserved.
 //
 
@@ -25,14 +25,14 @@
     
     NSDictionary *params = @{@"Quid":quid,
                              @"Auid":auid,
-                             @"Amount":[NSNumber numberWithFloat:amount],
+                             @"Amount":[NSNumber numberWithDouble:amount],
                              @"PaymentType":[NSNumber numberWithInteger:paymentType],
                              @"TradeType":[NSNumber numberWithFloat:tradeType],
                              };
     
     [[self createInstance] doPost:AZApiUriOrderAdd params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 AZOrderWrapper *orderWrapper = [AZOrderWrapper modelWithDict:dataDic];
                 callBack(orderWrapper, error);
             } else {
@@ -48,12 +48,39 @@
     NSArray *paramArr = @[ouid];
     [[self createInstance] doGet:AZApiUriOrderDetail params:paramArr requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
         if (callBack) {
-            if (!error) {
+            if (dataDic) {
                 AZOrderWrapper *orderWrapper = [AZOrderWrapper modelWithDict:dataDic];
                 callBack(orderWrapper, error);
             } else {
                 callBack(nil, error);
             }
+        }
+    }];
+}
+
+// 获取用户钱包余额
++ (void)requestWalletBalance:(void(^)(CGFloat balance, NSError *error))callBack {
+    [[self createInstance] doGet:AZApiUriWalletBalance params:@[] requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            if (dataDic) {
+                CGFloat balance = [[dataDic objectForKey:@"Balance"] doubleValue];
+                callBack(balance, error);
+            } else {
+                callBack(0, error);
+            }
+        }
+    }];
+}
+
+// 提现
++ (void)requestWalletBalanceToCash:(CGFloat)amount callBack:(void(^)(NSError *error))callBack {
+
+    NSDictionary *params = @{@"Amount":[NSNumber numberWithDouble:amount],
+                             };
+    
+    [[self createInstance] doPost:AZApiUriWalletBalanceToCash params:params requestCallBack:^(NSInteger status, NSDictionary *dataDic, NSString *msg, NSError *error) {
+        if (callBack) {
+            callBack(error);
         }
     }];
 }
