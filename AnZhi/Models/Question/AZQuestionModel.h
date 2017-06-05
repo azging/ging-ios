@@ -40,6 +40,6 @@ typedef enum : NSInteger {
 @property (copy, nonatomic) NSString *createTime;
 @property (copy, nonatomic) NSString *updateTime;
 
-
+@property (copy, nonatomic) NSString *shareImageUrl; // 悬赏令url
 
 @end

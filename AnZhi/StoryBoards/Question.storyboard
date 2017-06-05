@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,7 @@
         <scene sceneID="GPA-VW-JoF">
             <objects>
                 <navigationController id="TCp-Yy-XWf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nQI-2T-k5X">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nQI-2T-k5X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -313,6 +314,9 @@
                                     <constraint firstAttribute="trailing" secondItem="SoJ-Vi-LdQ" secondAttribute="trailing" id="gKY-Ud-uUW"/>
                                     <constraint firstAttribute="bottom" secondItem="yvy-er-oDV" secondAttribute="bottom" constant="5" id="yPL-Pk-ffl"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="jeg-6x-KY1" id="Kio-hz-agQ"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.96228176355361938" green="0.95968276262283325" blue="0.93850022554397583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

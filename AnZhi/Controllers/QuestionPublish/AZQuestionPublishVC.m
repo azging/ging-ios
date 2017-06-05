@@ -66,7 +66,17 @@ static const NSInteger AZQuestionDescTextLenghtMax = 280;
     [self initCollectionView];
 }
 
+- (void)refreshData {
+    [self updateShow];
+}
+
+- (void)updateShow {
+    [self.photoCollectionView reloadData];
+}
+
 - (void)initCollectionView {
+    [self.photoCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([AZImageUploadCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AZImageUploadCell class])];
+
 }
 
 - (IBAction)paymentTFEditingChanged:(UITextField *)sender {
@@ -142,6 +152,7 @@ static const NSInteger AZQuestionDescTextLenghtMax = 280;
         [AZViewUtil pickPhotos:(AZQuestionPublishImageMaxNum - self.imageArr.count + 1) callBack:^(NSArray *imageArr) {
             if (imageArr.count > 0) {
                 weakSelf.imageArr = [AZArrayUtil mergeArr:weakSelf.imageArr atIndex:(weakSelf.imageArr.count - 1) rearArr:imageArr];
+                [self updateShow];
             }
         } cancel:nil];
     } else {
@@ -162,7 +173,7 @@ static const NSInteger AZQuestionDescTextLenghtMax = 280;
         [AZAlertUtil showActionSheet:@[@"删除"] callBack:^(NSInteger selectIndex) {
             if (1 == selectIndex) {
                 self.imageArr = [AZArrayUtil removeObj:self.imageArr atIndex:indexPath.row];
-                [self.photoCollectionView reloadData];
+                [self updateShow];
             }
         }];
     }
@@ -196,7 +207,14 @@ static const NSInteger AZQuestionDescTextLenghtMax = 280;
     self.uploadTimes = 0;
     [AZAlertUtil showHudWithHint:@"正在发布..."];
     
-    [self questionPublish];
+    
+    NSArray *uploadImageArr = [AZArrayUtil removeRearObj:self.imageArr];
+
+    if (uploadImageArr.count) {
+        [self uploadImage];
+    } else {
+        [self requestQuestionPublish:nil];
+    }
 }
 
 
@@ -234,6 +252,7 @@ static const NSInteger AZQuestionDescTextLenghtMax = 280;
 - (void)questionPublish {
     NSArray *uploadImageArr = [AZArrayUtil removeRearObj:self.imageArr];
     NSMutableArray *uploadUrlArr = [NSMutableArray array];
+
     for (UIImage *image in uploadImageArr) {
         if (image.uploadFinished && [AZStringUtil isNotNullString:image.photoUrl]) {
             [uploadUrlArr addObject:image.photoUrl];
@@ -244,12 +263,12 @@ static const NSInteger AZQuestionDescTextLenghtMax = 280;
             return;
         }
     }
-    
-    [self requestQuestionPublish:uploadImageArr];
+
+    [self requestQuestionPublish:uploadUrlArr];
 }
 
-- (void)requestQuestionPublish:(NSArray *)uploadImageArr {
-    [AZNetRequester requestQuestionPublish:self.titleTF.text desc:self.descTextView.text photoUrlArr:uploadImageArr reward:[self.paymentTF.text doubleValue] isAnonymous:self.anonymousSwitch.on callBack:^(AZQuestionWrapper *questionWrapper, NSError *error) {
+- (void)requestQuestionPublish:(NSArray *)uploadUrlArr {
+    [AZNetRequester requestQuestionPublish:self.titleTF.text desc:self.descTextView.text photoUrlArr:uploadUrlArr reward:[self.paymentTF.text doubleValue] isAnonymous:self.anonymousSwitch.on callBack:^(AZQuestionWrapper *questionWrapper, NSError *error) {
         
         [AZAlertUtil hideHud];
         if (!error) {

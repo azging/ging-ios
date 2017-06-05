@@ -20,7 +20,7 @@
     
     NSDictionary *params = @{@"Title": title,
                              @"Description": desc,
-                             @"QuestionUrls": photoUrls,
+                             @"PhotoUrls": photoUrls,
                              @"Reward": [NSNumber numberWithDouble:reward],
                              @"IsAnonymous": [NSNumber numberWithBool:isAnonymous],
                              };

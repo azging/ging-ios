@@ -61,7 +61,7 @@
     [[UMSocialManager defaultManager] shareToPlatform:type messageObject:messageObject currentViewController:nil completion:^(id data, NSError *error) {
         [self cancelAction:nil];
         if (!error) {
-            [self cancelAction:nil];
+//            [self cancelAction:nil];
         } else {
             if (error.code == 2009) {
                 [AZAlertUtil tipOneMessage:@"取消分享"];
@@ -73,18 +73,14 @@
 }
 
 - (UMSocialMessageObject *)getShareMessageObject {
-    NSString *title = [self getShareTitle];
-    NSString *descr = [self getShareContent];
-    NSString *webpageUrl = [self getShareUrl];
-    if ([AZStringUtil isNullString:title] || [AZStringUtil isNullString:webpageUrl]) {
+    id image = [self getShareImage];
+    if (image == nil) {
         return nil;
     }
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-    UMShareWebpageObject *webObj = [UMShareWebpageObject shareObjectWithTitle:title descr:descr thumImage:[self getShareImage]];
-    webObj.webpageUrl = webpageUrl;
-    messageObject.shareObject = webObj;
-    messageObject.title = title;
-    messageObject.text = [title stringByAppendingString:webpageUrl]; // 分享到微博的内容和链接
+    UMShareImageObject *imgObj = [[UMShareImageObject alloc] init];
+    imgObj.shareImage = image;
+    messageObject.shareObject = imgObj;
     return messageObject;
 }
 
@@ -96,17 +92,15 @@
     return self.wrapper.questionModel.desc;
 }
 
-- (NSString *)getShareUrl {
-    return @"www.azging.com";
-}
-
 - (id)getShareImage {
-    NSString *url = @"";
+    NSString *url = self.wrapper.questionModel.shareImageUrl;
 
     if ([AZStringUtil isNotNullString:url]) {
         return url;
+    } else {
+        return nil;
     }
-    return [UIImage imageNamed:@"AppIcon"];
+//    return [UIImage imageNamed:@"CommonAppIcon"];
 }
 
 @end

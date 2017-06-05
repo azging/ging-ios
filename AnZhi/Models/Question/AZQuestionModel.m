@@ -26,6 +26,7 @@
              @"expireTimeStr":@"ExpireTimeStr",
              @"createTime":@"CreateTime",
              @"updateTime":@"UpdateTime",
+             @"shareImageUrl":@"ShareUrl",
 //             @"":@"",
 //             @"":@"",
 //             @"":@"",

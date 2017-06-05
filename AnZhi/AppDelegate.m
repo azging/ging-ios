@@ -106,7 +106,6 @@
     manager.enableAutoToolbar = NO;
 }
 
-
 #pragma mark - Private Func
 
 - (void)initCommonUI {
